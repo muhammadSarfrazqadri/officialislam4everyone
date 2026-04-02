@@ -4,7 +4,7 @@ const AboutPage = () => {
   return (
     <div className="min-h-screen bg-background font-sans">
       {/* Dynamic Hero Section */}
-      <section className="bg-[var(--secondary)] border-b-8 border-[var(--primary)] py-32 w-full relative overflow-hidden group">
+      <section className="bg-muted border-b-8 border-[var(--primary)] py-32 w-full relative overflow-hidden group">
         <div className="absolute top-0 right-0 p-24 text-[15rem] font-black text-foreground/5 leading-none group-hover:text-[var(--primary)]/5 transition-colors duration-1000 uppercase tracking-tighter pointer-events-none">Mission</div>
         <div className="container mx-auto px-6 relative z-10 text-center">
           <h1 className="text-6xl md:text-9xl font-black text-foreground uppercase tracking-tighter mb-4 scale-y-110">

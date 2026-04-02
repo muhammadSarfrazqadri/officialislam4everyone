@@ -4,6 +4,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Search, Volume2, Info, Loader2, Share2, Copy, Download, FileText, CheckCircle2, X, Filter, User, ArrowRight, Sparkles, Heart } from 'lucide-react';
 import Link from 'next/link';
+import { Play } from 'lucide-react';
 
 const NamesPage = () => {
   const [names, setNames] = useState([]);
@@ -99,6 +100,29 @@ const NamesPage = () => {
   return (
     <div className="min-h-screen bg-background text-foreground pb-32">
       
+            <section className="bg-muted text-foreground py-24 relative overflow-hidden">
+              <div className="container mx-auto px-6 relative z-10">
+                <motion.div 
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="max-w-3xl"
+                >
+                  <h1 className="text-6xl md:text-8xl font-black uppercase tracking-tighter mb-6 leading-none">
+                    Islamic <span className="text-[var(--primary)]">Names</span>
+                  </h1>
+                  <p className="text-slate-400 text-lg font-medium leading-relaxed max-w-xl">
+                    Explore the rich tapestry of Islamic names, from the divine Asma-ul-Husna to popular names for boys and girls.
+                  </p>
+                </motion.div>
+              </div>
+              
+              {/* Decorative Play Icon */}
+              <div className="absolute top-1/2 right-10 -translate-y-1/2 opacity-5 select-none pointer-events-none hidden lg:block">
+                  <Play className="w-[30rem] h-[30rem] stroke-white fill-white" />
+              </div>
+            </section>
+
+
       <div className="container mx-auto px-6 pt-48">
         {/* Header */}
         <div className="mb-24 text-center md:text-left">

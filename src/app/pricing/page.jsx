@@ -9,7 +9,7 @@ const PricingPage = () => {
 
   return (
     <div className="min-h-screen bg-slate-50 flex flex-col items-center">
-      <section className="bg-background border-b-8 border-[var(--primary)] py-40 w-full relative overflow-hidden group">
+      <section className="bg-muted border-b-8 border-[var(--primary)] py-40 w-full relative overflow-hidden group">
         <div className="absolute top-0 right-0 p-24 text-[20rem] font-black text-slate-50/50 leading-none group-hover:text-[var(--primary)]/5 transition-colors duration-1000 uppercase tracking-tighter">Value</div>
         <div className="container mx-auto px-6 relative z-10 text-center">
           <h1 className="text-6xl md:text-9xl font-black text-[var(--secondary)] uppercase tracking-tighter mb-4 scale-y-110">
