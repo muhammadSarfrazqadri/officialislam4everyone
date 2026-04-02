@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Search, Menu, X, ChevronDown } from 'lucide-react';
@@ -9,7 +9,37 @@ import { ThemeToggle } from '../src/components/theme-toggle';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  // const [isVisible, setIsVisible] = useState(true);
+  // const [lastScrollY, setLastScrollY] = useState(0);
   const pathname = usePathname();
+
+const lastScrollY = useRef(0);
+const [isVisible, setIsVisible] = useState(true);
+
+useEffect(() => {
+  const controlNavbar = () => {
+    const currentScrollY = window.scrollY;
+
+    // Ignore very small scrolls (IMPORTANT)
+    if (Math.abs(currentScrollY - lastScrollY.current) < 10) return;
+
+    if (currentScrollY > lastScrollY.current && currentScrollY > 70) {
+      // scroll down
+      setIsVisible(false);
+    } else if (currentScrollY < lastScrollY.current) {
+      // scroll up
+      setIsVisible(true);
+    }
+
+    lastScrollY.current = currentScrollY;
+  };
+
+  window.addEventListener('scroll', controlNavbar);
+
+  return () => {
+    window.removeEventListener('scroll', controlNavbar);
+  };
+}, []);
 
   const topNavItems = [
     { label: 'Home', link: '/' },
@@ -71,13 +101,20 @@ const Navbar = () => {
   return (
     <nav className="w-full bg-background font-sans border-b border-border shadow-sm sticky top-0 z-50 transition-colors duration-500">
       {/* Top Banner Text with background animation */}
-      <motion.div 
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        className="hidden md:flex justify-center py-2 bg-muted text-foreground/80 text-sm font-medium border-b border-border"
-      >
-        <span className="rtl">الحمد للہ رب العالمین، والصلاة والسلام علی سیدنا محمد وآلہ وصحبہ أجمعین</span>
-      </motion.div>
+      <AnimatePresence>
+        {isVisible && (
+          <motion.div 
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            exit={{ opacity: 0, height: 0 }}
+            className="hidden md:flex justify-center bg-muted text-foreground/80 text-sm font-medium border-b border-border overflow-hidden"
+          >
+            <div className="py-2">
+              <span className="rtl">الحمد للہ رب العالمین، والصلاة والسلام علی سیدنا محمد وآلہ وصحبہ أجمعین</span>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* Main Container */}
       <div className="container mx-auto px-4">
@@ -200,7 +237,7 @@ const Navbar = () => {
                       onClick={() => !item.dropdown && setIsMenuOpen(false)}
                       className={`
                         px-6 py-4 mx-4 rounded-2xl text-xs font-black uppercase tracking-widest flex items-center justify-between
-                        ${pathname === item.link ? 'bg-[#E14D4D] text-white' : 'text-gray-500 dark:text-white/40 bg-gray-50 dark:bg-white/5'}
+                        ${pathname === item.link ? 'bg-[#E14D4D] text-foreground' : 'text-gray-500 dark:text-foreground/40 bg-gray-50 dark:bg-background/5'}
                       `}
                     >
                       {item.label}
@@ -228,7 +265,7 @@ const Navbar = () => {
                 <div className="px-10 mt-4">
                   <motion.button 
                     whileTap={{ scale: 0.95 }}
-                    className="w-full bg-[#E14D4D] text-white py-5 rounded-2xl text-[10px] font-black uppercase tracking-[0.2em] shadow-xl"
+                    className="w-full bg-[#E14D4D] text-foreground py-5 rounded-2xl text-[10px] font-black uppercase tracking-[0.2em] shadow-xl"
                   >
                     Portal Access
                   </motion.button>

@@ -49,16 +49,16 @@ const ServicesPage = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-white font-sans">
+    <div className="min-h-screen bg-background font-sans">
       {/* High-Contrast Professional Header */}
-      <section className="bg-slate-50 border-b-8 border-[#E14D4D] py-40 w-full relative overflow-hidden group">
-        <div className="absolute top-0 right-0 p-24 text-[18rem] font-black text-[#222222]/5 leading-none group-hover:text-[#E14D4D]/5 transition-colors duration-1000 uppercase tracking-tighter pointer-events-none">Services</div>
+      <section className="bg-slate-50 border-b-8 border-[var(--primary)] py-40 w-full relative overflow-hidden group">
+        <div className="absolute top-0 right-0 p-24 text-[18rem] font-black text-[var(--secondary)]/5 leading-none group-hover:text-[var(--primary)]/5 transition-colors duration-1000 uppercase tracking-tighter pointer-events-none">Services</div>
         <div className="container mx-auto px-6 relative z-10 text-center">
-          <h1 className="text-6xl md:text-9xl font-black text-[#222222] uppercase tracking-tighter mb-4 scale-y-110">
-            Our <span className="text-[#E14D4D]">Services</span>
+          <h1 className="text-6xl md:text-9xl font-black text-[var(--secondary)] uppercase tracking-tighter mb-4 scale-y-110">
+            Our <span className="text-[var(--primary)]">Services</span>
           </h1>
           <p className="text-2xl font-black uppercase text-slate-400 tracking-[0.5em] mb-12">Professional Islamic Guidance</p>
-          <div className="w-16 h-1 bg-[#E14D4D] mx-auto opacity-50 shadow-[0_0_20px_rgba(225,77,77,0.5)]"></div>
+          <div className="w-16 h-1 bg-[var(--primary)] mx-auto opacity-50 shadow-[0_0_20px_rgba(225,77,77,0.5)]"></div>
         </div>
       </section>
 
@@ -67,14 +67,14 @@ const ServicesPage = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
            {services.map((service, i) => (
              <div key={i} className="group relative">
-                <div className="bg-white border-[0.5px] border-slate-100 p-16 aspect-square flex flex-col items-center justify-center gap-12 group-hover:shadow-2xl transition-all duration-700 hover:border-[#E14D4D] hover:-translate-y-4 rounded-[4rem] group-hover:bg-slate-50/50">
+                <div className="bg-background border-[0.5px] border-border p-16 aspect-square flex flex-col items-center justify-center gap-12 group-hover:shadow-2xl transition-all duration-700 hover:border-[var(--primary)] hover:-translate-y-4 rounded-[4rem] group-hover:bg-slate-50/50">
                    <div className="text-7xl mb-4 group-hover:scale-110 transition-transform duration-500 scale-125 transform">{service.icon}</div>
                    <div className="flex flex-col items-center gap-4 grow">
-                      <h4 className="text-2xl md:text-3xl font-black text-[#222222] uppercase tracking-widest text-center leading-none group-hover:text-[#E14D4D] transition-colors">{service.title}</h4>
+                      <h4 className="text-2xl md:text-3xl font-black text-[var(--secondary)] uppercase tracking-widest text-center leading-none group-hover:text-[var(--primary)] transition-colors">{service.title}</h4>
                       <p className="text-sm md:text-base text-slate-400 font-bold uppercase tracking-widest text-center leading-relaxed italic group-hover:text-slate-600 transition-colors">{service.desc}</p>
                    </div>
                    <div className="absolute bottom-10 opacity-30 group-hover:opacity-100 group-hover:bottom-12 transition-all">
-                      <span className="text-xs font-black uppercase tracking-[1em] text-[#E14D4D]">&rarr; Learn More</span>
+                      <span className="text-xs font-black uppercase tracking-[1em] text-[var(--primary)]">&rarr; Learn More</span>
                    </div>
                 </div>
              </div>
@@ -87,72 +87,72 @@ const ServicesPage = () => {
         <div className="container mx-auto px-6 relative z-10">
           <div className="flex flex-col md:flex-row justify-between items-end mb-24 gap-8">
             <div className="max-w-2xl">
-              <span className="text-[10px] font-black uppercase tracking-[0.5em] text-[#E14D4D] mb-6 block">The Backbone of Excellence</span>
-              <h2 className="text-6xl md:text-8xl font-black text-white uppercase tracking-tighter leading-none italic">
-                Our <span className="text-white/20">Core Team</span>
+              <span className="text-[10px] font-black uppercase tracking-[0.5em] text-[var(--primary)] mb-6 block">The Backbone of Excellence</span>
+              <h2 className="text-6xl md:text-8xl font-black text-foreground uppercase tracking-tighter leading-none italic">
+                Our <span className="text-foreground/20">Core Team</span>
               </h2>
             </div>
-            <p className="text-slate-400 text-lg font-medium max-w-md italic border-l border-[#E14D4D] pl-8">
+            <p className="text-slate-400 text-lg font-medium max-w-md italic border-l border-[var(--primary)] pl-8">
               A diverse collective of scholars, educators, and technology experts dedicated to Islamic literacy.
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {team.map((member, i) => (
-              <div key={i} className="group bg-white/5 border border-white/10 rounded-[3rem] p-8 hover:bg-white/10 transition-all duration-500">
+              <div key={i} className="group bg-card/5 border border-white/10 rounded-[3rem] p-8 hover:bg-background/10 transition-all duration-500">
                 <div className="relative mb-8 aspect-[4/5] rounded-[2rem] overflow-hidden grayscale group-hover:grayscale-0 transition-all duration-700">
                   <img src={member.image} alt={member.name} className="w-full h-full object-cover" />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
                     <div className="absolute bottom-6 left-6 right-6 flex justify-around">
-                      <button className="w-10 h-10 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center hover:bg-[#E14D4D] transition-colors">
-                        <LinkIcon className="w-4 h-4 text-white" />
+                      <button className="w-10 h-10 rounded-full bg-background/10 backdrop-blur-md flex items-center justify-center hover:bg-[var(--primary)] transition-colors">
+                        <LinkIcon className="w-4 h-4 text-foreground" />
                       </button>
-                      <button className="w-10 h-10 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center hover:bg-[#E14D4D] transition-colors">
-                        <Mail className="w-4 h-4 text-white" />
+                      <button className="w-10 h-10 rounded-full bg-background/10 backdrop-blur-md flex items-center justify-center hover:bg-[var(--primary)] transition-colors">
+                        <Mail className="w-4 h-4 text-foreground" />
                       </button>
-                      <button className="w-10 h-10 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center hover:bg-[#E14D4D] transition-colors">
-                        <ExternalLink className="w-4 h-4 text-white" />
+                      <button className="w-10 h-10 rounded-full bg-background/10 backdrop-blur-md flex items-center justify-center hover:bg-[var(--primary)] transition-colors">
+                        <ExternalLink className="w-4 h-4 text-foreground" />
                       </button>
                     </div>
                   </div>
                 </div>
                 
-                <h3 className="text-2xl font-black text-white uppercase tracking-tight mb-2">{member.name}</h3>
-                <p className="text-[#E14D4D] text-[10px] font-black uppercase tracking-widest mb-4">{member.role}</p>
+                <h3 className="text-2xl font-black text-foreground uppercase tracking-tight mb-2">{member.name}</h3>
+                <p className="text-[var(--primary)] text-[10px] font-black uppercase tracking-widest mb-4">{member.role}</p>
                 <p className="text-slate-400 text-sm font-medium italic line-clamp-3">"{member.bio}"</p>
               </div>
             ))}
           </div>
         </div>
 
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[40rem] font-black text-white/[0.02] pointer-events-none select-none italic uppercase">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[40rem] font-black text-foreground/[0.02] pointer-events-none select-none italic uppercase">
           Elite
         </div>
       </section>
 
       {/* Why Choose Us / Trust Metrics */}
-      <section className="py-40 bg-white">
+      <section className="py-40 bg-background">
         <div className="container mx-auto px-6">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-24">
             <div className="space-y-8">
-              <div className="w-16 h-16 bg-slate-50 flex items-center justify-center rounded-2xl rotate-3 group hover:rotate-6 transition-transform border border-[#E14D4D]/10">
-                <ShieldCheck className="w-8 h-8 text-[#E14D4D]" />
+              <div className="w-16 h-16 bg-slate-50 flex items-center justify-center rounded-2xl rotate-3 group hover:rotate-6 transition-transform border border-[var(--primary)]/10">
+                <ShieldCheck className="w-8 h-8 text-[var(--primary)]" />
               </div>
               <h4 className="text-3xl font-black uppercase tracking-tighter">Verified Authenticity</h4>
               <p className="text-slate-500 font-medium leading-relaxed italic">All our courses and content are vetted by a global board of recognized Islamic authorities and educational specialists.</p>
             </div>
             
             <div className="space-y-8">
-              <div className="w-16 h-16 bg-slate-50 flex items-center justify-center rounded-2xl -rotate-3 group hover:-rotate-6 transition-transform border border-[#E14D4D]/10">
-                <Zap className="w-8 h-8 text-[#E14D4D]" />
+              <div className="w-16 h-16 bg-slate-50 flex items-center justify-center rounded-2xl -rotate-3 group hover:-rotate-6 transition-transform border border-[var(--primary)]/10">
+                <Zap className="w-8 h-8 text-[var(--primary)]" />
               </div>
               <h4 className="text-3xl font-black uppercase tracking-tighter">Proprietary LMS</h4>
               <p className="text-slate-500 font-medium leading-relaxed italic">Learn through our custom-built digital environment designed specifically for the unique requirements of Islamic pedagogy.</p>
             </div>
 
             <div className="space-y-8">
-              <div className="w-16 h-16 bg-slate-50 flex items-center justify-center rounded-2xl rotate-3 group hover:rotate-6 transition-transform border border-[#E14D4D]/10">
-                <Clock className="w-8 h-8 text-[#E14D4D]" />
+              <div className="w-16 h-16 bg-slate-50 flex items-center justify-center rounded-2xl rotate-3 group hover:rotate-6 transition-transform border border-[var(--primary)]/10">
+                <Clock className="w-8 h-8 text-[var(--primary)]" />
               </div>
               <h4 className="text-3xl font-black uppercase tracking-tighter">Lifetime Support</h4>
               <p className="text-slate-500 font-medium leading-relaxed italic">Your learning doesn't end with a certificate. Join our global alumni network for perpetual access to mentors and resources.</p>
@@ -162,18 +162,18 @@ const ServicesPage = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="bg-[#222222] py-40 text-center text-white relative overflow-hidden">
-        <div className="absolute inset-0 bg-[#E14D4D]/5 pointer-events-none"></div>
+      <section className="bg-[var(--secondary)] py-40 text-center text-foreground relative overflow-hidden">
+        <div className="absolute inset-0 bg-[var(--primary)]/5 pointer-events-none"></div>
         <div className="container mx-auto px-6 relative z-10 flex flex-col items-center">
-          <span className="text-[10px] font-black uppercase tracking-[0.8em] text-[#E14D4D] mb-12">Take the first step</span>
+          <span className="text-[10px] font-black uppercase tracking-[0.8em] text-[var(--primary)] mb-12">Take the first step</span>
           <h3 className="text-5xl md:text-8xl font-black uppercase tracking-tighter mb-16 max-w-4xl leading-[0.9] italic">
-            Ready to <span className="text-[#E14D4D]">Transform</span> your understanding?
+            Ready to <span className="text-[var(--primary)]">Transform</span> your understanding?
           </h3>
           <div className="flex flex-wrap justify-center gap-8">
-            <button className="px-12 py-6 bg-[#E14D4D] text-white text-[11px] font-black uppercase tracking-[0.5em] hover:bg-white hover:text-[#E14D4D] transition-all shadow-2xl hover:scale-105 duration-300 rounded-full">
+            <button className="px-12 py-6 bg-[var(--primary)] text-foreground text-[11px] font-black uppercase tracking-[0.5em] hover:bg-background hover:text-[var(--primary)] transition-all shadow-2xl hover:scale-105 duration-300 rounded-full">
                  Initialize Registration
             </button>
-            <button className="px-12 py-6 border border-white/10 text-white text-[11px] font-black uppercase tracking-[0.5em] hover:bg-white hover:text-black transition-all rounded-full flex items-center gap-4 group">
+            <button className="px-12 py-6 border border-white/10 text-foreground text-[11px] font-black uppercase tracking-[0.5em] hover:bg-background hover:text-black transition-all rounded-full flex items-center gap-4 group">
                  Watch Orientation <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </button>
           </div>

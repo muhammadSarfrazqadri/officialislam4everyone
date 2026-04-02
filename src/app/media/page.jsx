@@ -73,9 +73,9 @@ const MediaPage = () => {
   });
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-background">
       {/* Hero Section */}
-      <section className="bg-[#222222] text-white py-24 relative overflow-hidden">
+      <section className="bg-[var(--secondary)] text-foreground py-24 relative overflow-hidden">
         <div className="container mx-auto px-6 relative z-10">
           <motion.div 
             initial={{ opacity: 0, y: 30 }}
@@ -83,7 +83,7 @@ const MediaPage = () => {
             className="max-w-3xl"
           >
             <h1 className="text-6xl md:text-8xl font-black uppercase tracking-tighter mb-6 leading-none">
-              Islamic <span className="text-[#E14D4D]">Media</span>
+              Islamic <span className="text-[var(--primary)]">Media</span>
             </h1>
             <p className="text-slate-400 text-lg font-medium leading-relaxed max-w-xl">
               Immerse yourself in high-quality Islamic content, from scholarly lectures to soul-stirring recitations and educational documentaries.
@@ -98,16 +98,16 @@ const MediaPage = () => {
       </section>
 
       {/* Controls: Search & Categories */}
-      <section className="bg-white border-b border-slate-100 sticky top-0 z-40 shadow-sm">
+      <section className="bg-background border-b border-border sticky top-0 z-40 shadow-sm">
         <div className="container mx-auto px-6 py-6 flex flex-col md:flex-row gap-6 items-center justify-between">
             <div className="relative w-full md:max-w-md group">
-                <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 group-focus-within:text-[#E14D4D] transition-colors" />
+                <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 group-focus-within:text-[var(--primary)] transition-colors" />
                 <input 
                     type="text" 
                     placeholder="Search for videos or topics..."
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
-                    className="w-full bg-slate-50 border-2 border-slate-50 rounded-full py-4 pl-12 pr-6 text-sm outline-none focus:border-[#E14D4D] focus:bg-white transition-all text-[#222222]"
+                    className="w-full bg-slate-50 border-2 border-slate-50 rounded-full py-4 pl-12 pr-6 text-sm outline-none focus:border-[var(--primary)] focus:bg-background transition-all text-[var(--secondary)]"
                 />
             </div>
 
@@ -118,8 +118,8 @@ const MediaPage = () => {
                         onClick={() => setFilter(cat)}
                         className={`px-6 py-3 rounded-full text-[10px] font-black uppercase tracking-widest transition-all whitespace-nowrap ${
                             filter === cat 
-                            ? 'bg-[#E14D4D] text-white shadow-lg shadow-[#E14D4D]/20' 
-                            : 'bg-slate-50 text-slate-400 hover:bg-slate-100 hover:text-[#222222]'
+                            ? 'bg-[var(--primary)] text-foreground shadow-lg shadow-[var(--primary)]/20' 
+                            : 'bg-slate-50 text-slate-400 hover:bg-slate-100 hover:text-[var(--secondary)]'
                         }`}
                     >
                         {cat}
@@ -133,8 +133,8 @@ const MediaPage = () => {
       <section className="container mx-auto px-6 py-20">
         <div className="flex justify-between items-end mb-16">
             <div className="flex flex-col gap-1">
-                <span className="text-[10px] font-black text-[#E14D4D] uppercase tracking-[0.4em]">Latest Content</span>
-                <h2 className="text-4xl font-black text-[#222222] uppercase tracking-tighter">Explore Repository</h2>
+                <span className="text-[10px] font-black text-[var(--primary)] uppercase tracking-[0.4em]">Latest Content</span>
+                <h2 className="text-4xl font-black text-[var(--secondary)] uppercase tracking-tighter">Explore Repository</h2>
             </div>
             <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest hidden md:block">
                 Showing {filteredVideos.length} items
@@ -159,22 +159,22 @@ const MediaPage = () => {
                                 alt={video.title}
                                 className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                             />
-                            <div className="absolute inset-0 bg-[#222222]/20 group-hover:bg-[#E14D4D]/40 transition-colors duration-500"></div>
+                            <div className="absolute inset-0 bg-[var(--secondary)]/20 group-hover:bg-[var(--primary)]/40 transition-colors duration-500"></div>
                             
                             {/* Play Button Overlay */}
                             <div className="absolute inset-0 flex items-center justify-center">
-                                <div className="w-16 h-16 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center group-hover:bg-white group-hover:scale-110 transition-all duration-300 shadow-2xl">
-                                    <Play className="w-6 h-6 fill-[#222222] text-[#222222] group-hover:fill-[#E14D4D] group-hover:text-[#E14D4D] translate-x-0.5" />
+                                <div className="w-16 h-16 bg-background/20 backdrop-blur-md rounded-full flex items-center justify-center group-hover:bg-background group-hover:scale-110 transition-all duration-300 shadow-2xl">
+                                    <Play className="w-6 h-6 fill-[var(--secondary)] text-[var(--secondary)] group-hover:fill-[var(--primary)] group-hover:text-[var(--primary)] translate-x-0.5" />
                                 </div>
                             </div>
 
                             {/* Duration Badge */}
-                            <div className="absolute bottom-4 right-4 bg-[#222222]/80 backdrop-blur-sm text-white px-3 py-1 rounded-lg text-[10px] font-black tracking-widest">
+                            <div className="absolute bottom-4 right-4 bg-[var(--secondary)]/80 backdrop-blur-sm text-foreground px-3 py-1 rounded-lg text-[10px] font-black tracking-widest">
                                 {video.duration}
                             </div>
                             
                             {/* Category Badge */}
-                            <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-sm text-[#E14D4D] px-4 py-1.5 rounded-full text-[9px] font-black uppercase tracking-widest">
+                            <div className="absolute top-4 left-4 bg-background/90 backdrop-blur-sm text-[var(--primary)] px-4 py-1.5 rounded-full text-[9px] font-black uppercase tracking-widest">
                                 {video.category}
                             </div>
                         </div>
@@ -186,7 +186,7 @@ const MediaPage = () => {
                                 <span className="flex items-center gap-1.5"><Clock className="w-3 h-3" /> {video.duration}</span>
                             </div>
                             
-                            <h3 className="text-xl font-black text-[#222222] uppercase tracking-tight mb-4 group-hover:text-[#E14D4D] transition-colors leading-tight">
+                            <h3 className="text-xl font-black text-[var(--secondary)] uppercase tracking-tight mb-4 group-hover:text-[var(--primary)] transition-colors leading-tight">
                                 {video.title}
                             </h3>
                             
@@ -195,10 +195,10 @@ const MediaPage = () => {
                             </p>
 
                             <div className="mt-auto pt-6 border-t border-slate-50 flex items-center justify-between">
-                                <button className="text-[10px] font-black uppercase tracking-[0.2em] text-[#222222] group-hover:text-[#E14D4D] transition-colors flex items-center gap-2">
+                                <button className="text-[10px] font-black uppercase tracking-[0.2em] text-[var(--secondary)] group-hover:text-[var(--primary)] transition-colors flex items-center gap-2">
                                     Watch Video <span className="group-hover:translate-x-1 transition-transform">→</span>
                                 </button>
-                                <button className="p-2 hover:bg-slate-50 rounded-full transition-colors text-slate-300 hover:text-[#222222]">
+                                <button className="p-2 hover:bg-slate-50 rounded-full transition-colors text-slate-300 hover:text-[var(--secondary)]">
                                     <Share2 className="w-4 h-4" />
                                 </button>
                             </div>
@@ -211,10 +211,10 @@ const MediaPage = () => {
         {filteredVideos.length === 0 && (
             <div className="py-40 text-center">
                 <Search className="w-16 h-16 text-slate-100 mx-auto mb-6" />
-                <p className="text-[#222222] font-black uppercase tracking-widest text-sm">No media found matching your search.</p>
+                <p className="text-[var(--secondary)] font-black uppercase tracking-widest text-sm">No media found matching your search.</p>
                 <button 
                   onClick={() => {setFilter('all'); setSearchTerm('');}}
-                  className="mt-6 text-[#E14D4D] font-black uppercase tracking-widest text-[10px] underline underline-offset-8"
+                  className="mt-6 text-[var(--primary)] font-black uppercase tracking-widest text-[10px] underline underline-offset-8"
                 >
                     Clear All Filters
                 </button>
@@ -224,7 +224,7 @@ const MediaPage = () => {
 
       {/* Featured Playlist Promotion */}
       <section className="container mx-auto px-6 pb-32">
-        <div className="bg-[#222222] rounded-[3rem] p-12 md:p-24 relative overflow-hidden group">
+        <div className="bg-[var(--secondary)] rounded-[3rem] p-12 md:p-24 relative overflow-hidden group">
             <div className="absolute top-0 right-0 w-full h-full opacity-10 pointer-events-none grayscale group-hover:grayscale-0 transition-all duration-700">
                 <img 
                   src="https://images.unsplash.com/photo-1542810634-71277d903dc2?auto=format&fit=crop&q=80&w=1600" 
@@ -234,15 +234,15 @@ const MediaPage = () => {
             </div>
             
             <div className="relative z-10 max-w-2xl">
-                <span className="text-[10px] font-black text-[#E14D4D] uppercase tracking-[0.5em] mb-6 block">Featured Series</span>
-                <h2 className="text-4xl md:text-6xl font-black text-white uppercase tracking-tighter mb-8 leading-none">
-                    The Lives of the <br /> <span className="text-[#E14D4D]">Great Sahaba</span>
+                <span className="text-[10px] font-black text-[var(--primary)] uppercase tracking-[0.5em] mb-6 block">Featured Series</span>
+                <h2 className="text-4xl md:text-6xl font-black text-foreground uppercase tracking-tighter mb-8 leading-none">
+                    The Lives of the <br /> <span className="text-[var(--primary)]">Great Sahaba</span>
                 </h2>
                 <div className="flex gap-4">
-                    <button className="bg-[#E14D4D] text-white px-10 py-5 rounded-full font-black uppercase tracking-widest text-xs hover:scale-105 active:scale-95 transition-all shadow-2xl shadow-[#E14D4D]/20">
+                    <button className="bg-[var(--primary)] text-foreground px-10 py-5 rounded-full font-black uppercase tracking-widest text-xs hover:scale-105 active:scale-95 transition-all shadow-2xl shadow-[var(--primary)]/20">
                         Start Watching Series
                     </button>
-                    <button className="bg-white/10 backdrop-blur-md text-white border border-white/20 px-10 py-5 rounded-full font-black uppercase tracking-widest text-xs hover:bg-white/20 transition-all">
+                    <button className="bg-background/10 backdrop-blur-md text-foreground border border-white/20 px-10 py-5 rounded-full font-black uppercase tracking-widest text-xs hover:bg-background/20 transition-all">
                         View Details
                     </button>
                 </div>

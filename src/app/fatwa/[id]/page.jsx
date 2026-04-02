@@ -107,21 +107,21 @@ const FatwaDetailPage = ({ params }) => {
 
   if (!fatwa) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-white">
+      <div className="min-h-screen flex items-center justify-center bg-background">
         <div className="text-center">
-            <h1 className="text-4xl font-black text-[#222222]">Ruling Not Found</h1>
-            <Link href="/fatwa" className="text-[#E14D4D] font-bold mt-4 block">Back to List</Link>
+            <h1 className="text-4xl font-black text-[var(--secondary)]">Ruling Not Found</h1>
+            <Link href="/fatwa" className="text-[var(--primary)] font-bold mt-4 block">Back to List</Link>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-background">
       {/* Dynamic Header */}
-      <section className="bg-[#222222] text-white py-32 relative overflow-hidden">
+      <section className="bg-[var(--secondary)] text-foreground py-32 relative overflow-hidden">
         <div className="container mx-auto px-6 relative z-10">
-          <Link href="/fatwa" className="inline-flex items-center gap-4 text-xs font-black uppercase tracking-[0.3em] text-[#E14D4D] mb-16 hover:gap-6 transition-all">
+          <Link href="/fatwa" className="inline-flex items-center gap-4 text-xs font-black uppercase tracking-[0.3em] text-[var(--primary)] mb-16 hover:gap-6 transition-all">
             <ArrowLeft className="w-5 h-5" /> Back to Archive
           </Link>
           
@@ -129,7 +129,7 @@ const FatwaDetailPage = ({ params }) => {
             <motion.div 
               initial={{ width: 0 }}
               animate={{ width: 80 }}
-              className="h-2 bg-[#E14D4D] mb-12 rounded-full"
+              className="h-2 bg-[var(--primary)] mb-12 rounded-full"
             ></motion.div>
             <motion.h1 
               initial={{ opacity: 0, y: 20 }}
@@ -141,15 +141,15 @@ const FatwaDetailPage = ({ params }) => {
             
             <div className="flex flex-wrap items-center gap-8">
                 <div className="flex items-center gap-3">
-                    <div className="w-12 h-12 rounded-full bg-[#E14D4D] flex items-center justify-center text-white font-black">
+                    <div className="w-12 h-12 rounded-full bg-[var(--primary)] flex items-center justify-center text-foreground font-black">
                         {fatwa.mufti[0]}
                     </div>
                     <div>
-                        <p className="text-[10px] font-black uppercase tracking-widest text-white">{fatwa.mufti}</p>
+                        <p className="text-[10px] font-black uppercase tracking-widest text-foreground">{fatwa.mufti}</p>
                         <p className="text-[10px] font-black uppercase tracking-widest text-slate-500">{fatwa.muftiRole}</p>
                     </div>
                 </div>
-                <div className="h-10 w-px bg-white/10 hidden md:block"></div>
+                <div className="h-10 w-px bg-background/10 hidden md:block"></div>
                 <div className="flex items-center gap-3 text-slate-400">
                     <Clock className="w-5 h-5" />
                     <span className="text-[10px] font-black uppercase tracking-widest">Published {fatwa.date}</span>
@@ -162,7 +162,7 @@ const FatwaDetailPage = ({ params }) => {
           </div>
         </div>
         
-        <div className="absolute top-1/2 right-0 -translate-y-1/2 text-[30rem] font-black text-white/5 opacity-[0.02] pointer-events-none select-none">
+        <div className="absolute top-1/2 right-0 -translate-y-1/2 text-[30rem] font-black text-foreground/5 opacity-[0.02] pointer-events-none select-none">
             FATWA
         </div>
       </section>
@@ -173,12 +173,12 @@ const FatwaDetailPage = ({ params }) => {
             {/* Main Content Area */}
             <div className="lg:w-2/3">
                 <div className="prose prose-xl prose-slate max-w-none">
-                    <p className="text-2xl font-bold text-[#222222] mb-10 leading-relaxed italic border-l-8 border-[#E14D4D] pl-8">
+                    <p className="text-2xl font-bold text-[var(--secondary)] mb-10 leading-relaxed italic border-l-8 border-[var(--primary)] pl-8">
                         "{fatwa.answer}"
                     </p>
                     
                     <div className="space-y-10 mt-16">
-                        <h2 className="text-2xl font-black text-[#222222] uppercase tracking-tighter flex items-center gap-4">
+                        <h2 className="text-2xl font-black text-[var(--secondary)] uppercase tracking-tighter flex items-center gap-4">
                             Detailed Explanation <div className="h-px flex-grow bg-slate-100"></div>
                         </h2>
                         <div className="text-lg text-slate-600 leading-relaxed font-medium whitespace-pre-line">
@@ -186,14 +186,14 @@ const FatwaDetailPage = ({ params }) => {
                         </div>
                     </div>
 
-                    <div className="mt-20 p-12 bg-slate-50 rounded-[3rem] border-2 border-slate-100">
-                        <h4 className="text-xs font-black text-[#222222] uppercase tracking-[0.4em] mb-8 flex items-center gap-4">
-                            <BookOpen className="w-5 h-5 text-[#E14D4D]" /> Primary References
+                    <div className="mt-20 p-12 bg-slate-50 rounded-[3rem] border-2 border-border">
+                        <h4 className="text-xs font-black text-[var(--secondary)] uppercase tracking-[0.4em] mb-8 flex items-center gap-4">
+                            <BookOpen className="w-5 h-5 text-[var(--primary)]" /> Primary References
                         </h4>
                         <ul className="grid grid-cols-1 md:grid-cols-2 gap-4">
                             {fatwa.references.map((ref, i) => (
                                 <li key={i} className="flex items-center gap-3 text-slate-500 text-sm font-bold uppercase tracking-wider">
-                                    <div className="w-2 h-2 rounded-full bg-[#E14D4D]"></div> {ref}
+                                    <div className="w-2 h-2 rounded-full bg-[var(--primary)]"></div> {ref}
                                 </li>
                             ))}
                         </ul>
@@ -203,18 +203,18 @@ const FatwaDetailPage = ({ params }) => {
 
             {/* Sidebar Tools */}
             <aside className="lg:w-1/3 space-y-12">
-                <div className="bg-[#222222] rounded-[3rem] p-10 text-white">
-                    <h3 className="text-xs font-black uppercase tracking-[0.4em] mb-10 text-[#E14D4D]">Quick Actions</h3>
+                <div className="bg-[var(--secondary)] rounded-[3rem] p-10 text-foreground">
+                    <h3 className="text-xs font-black uppercase tracking-[0.4em] mb-10 text-[var(--primary)]">Quick Actions</h3>
                     <div className="space-y-4">
-                        <button className="w-full flex items-center justify-between px-8 py-6 bg-white/5 hover:bg-[#E14D4D] rounded-2xl transition-all group">
+                        <button className="w-full flex items-center justify-between px-8 py-6 bg-background/5 hover:bg-[var(--primary)] rounded-2xl transition-all group">
                             <span className="text-[10px] font-black uppercase tracking-widest">Share this Ruling</span>
                             <Share2 className="w-5 h-5 group-hover:rotate-12 transition-transform" />
                         </button>
-                        <button className="w-full flex items-center justify-between px-8 py-6 bg-white/5 hover:bg-[#E14D4D] rounded-2xl transition-all group">
+                        <button className="w-full flex items-center justify-between px-8 py-6 bg-background/5 hover:bg-[var(--primary)] rounded-2xl transition-all group">
                             <span className="text-[10px] font-black uppercase tracking-widest">Request Clarification</span>
                             <MessageSquare className="w-5 h-5 group-hover:-translate-y-1 transition-transform" />
                         </button>
-                        <button className="w-full flex items-center justify-between px-8 py-6 bg-white/5 hover:bg-white hover:text-[#222222] rounded-2xl transition-all group">
+                        <button className="w-full flex items-center justify-between px-8 py-6 bg-background/5 hover:bg-background hover:text-[var(--secondary)] rounded-2xl transition-all group">
                             <span className="text-[10px] font-black uppercase tracking-widest">Download PDF</span>
                             <Info className="w-5 h-5" />
                         </button>
@@ -225,7 +225,7 @@ const FatwaDetailPage = ({ params }) => {
                     <h3 className="text-xs font-black uppercase tracking-[0.4em] mb-10 text-slate-400">Relevant Tags</h3>
                     <div className="flex flex-wrap gap-3">
                         {fatwa.tags.map(tag => (
-                            <span key={tag} className="px-6 py-3 bg-slate-50 rounded-full text-[9px] font-black uppercase tracking-widest text-slate-500 border border-slate-100">
+                            <span key={tag} className="px-6 py-3 bg-slate-50 rounded-full text-[9px] font-black uppercase tracking-widest text-slate-500 border border-border">
                                 #{tag}
                             </span>
                         ))}

@@ -52,15 +52,15 @@ const NameDetailPage = ({ params }) => {
   };
 
   if (loading) return (
-    <div className="min-h-screen bg-white flex justify-center items-center">
+    <div className="min-h-screen bg-background flex justify-center items-center">
       <Loader2 className="w-12 h-12 text-[#E14D4D] animate-spin" />
     </div>
   );
 
   return (
-    <div className="min-h-screen bg-white text-[#222222]">
+    <div className="min-h-screen bg-background text-[#222222]">
       {/* Immersive Header Section */}
-      <section className="bg-[#222222] text-white py-32 relative overflow-hidden">
+      <section className="bg-[#222222] text-foreground py-32 relative overflow-hidden">
         <div className="absolute top-0 right-0 p-24 text-[30rem] font-black opacity-[0.03] select-none pointer-events-none translate-x-1/4 leading-none italic rotate-12">
             {nameData?.name}
         </div>
@@ -80,7 +80,7 @@ const NameDetailPage = ({ params }) => {
                     {nameData?.en.meaning}
                 </p>
                 <div className="flex flex-wrap gap-4">
-                    <span className="bg-white/10 px-8 py-3 rounded-full text-[10px] font-black uppercase tracking-widest border border-white/5">Attribute #{number}</span>
+                    <span className="bg-background/10 px-8 py-3 rounded-full text-[10px] font-black uppercase tracking-widest border border-white/5">Attribute #{number}</span>
                     <span className="bg-[#E14D4D] px-8 py-3 rounded-full text-[10px] font-black uppercase tracking-widest shadow-lg shadow-[#E14D4D]/20">{nameData?.urdu}</span>
                 </div>
              </motion.div>
@@ -99,7 +99,7 @@ const NameDetailPage = ({ params }) => {
         <div className="grid grid-cols-1 md:grid-cols-12 gap-20">
             {/* Main Details */}
             <div className="md:col-span-8 space-y-20">
-                <div className="bg-slate-50 p-16 rounded-[4rem] border border-slate-100">
+                <div className="bg-slate-50 p-16 rounded-[4rem] border border-border">
                     <h3 className="text-[10px] font-black uppercase tracking-[0.5em] text-[#E14D4D] mb-10 flex items-center gap-4">
                         <div className="w-12 h-px bg-[#E14D4D]/20"></div> The Divine Essence
                     </h3>
@@ -112,13 +112,13 @@ const NameDetailPage = ({ params }) => {
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
-                    <div className="bg-white border-2 border-slate-50 p-12 rounded-[3rem] hover:border-[#E14D4D] transition-all">
+                    <div className="bg-background border-2 border-slate-50 p-12 rounded-[3rem] hover:border-[#E14D4D] transition-all">
                         <Bookmark className="w-8 h-8 text-[#E14D4D] mb-6" />
                         <h4 className="text-[10px] font-black uppercase tracking-widest mb-4">Sacred Context</h4>
                         <p className="text-sm font-bold text-slate-600 italic">"To Allah belong the best names, so invoke Him by them."</p>
                         <span className="text-[9px] font-black uppercase text-[#222222] mt-4 block">{nameData?.reference}</span>
                     </div>
-                    <div className="bg-white border-2 border-slate-50 p-12 rounded-[3rem] hover:border-[#E14D4D] transition-all">
+                    <div className="bg-background border-2 border-slate-50 p-12 rounded-[3rem] hover:border-[#E14D4D] transition-all">
                         <Volume2 className="w-8 h-8 text-[#E14D4D] mb-6" />
                         <h4 className="text-[10px] font-black uppercase tracking-widest mb-4">Spiritual Practice</h4>
                         <p className="text-sm font-bold text-slate-600">Reciting this name frequently is said to instill a sense of divine protection and clarity.</p>
@@ -128,18 +128,18 @@ const NameDetailPage = ({ params }) => {
 
             {/* Sidebar Actions */}
             <div className="md:col-span-4">
-                <div className="sticky top-12 p-12 bg-[#222222] rounded-[4rem] text-white">
+                <div className="sticky top-12 p-12 bg-[#222222] rounded-[4rem] text-foreground">
                     <h4 className="text-center text-[10px] font-black uppercase tracking-[0.3em] mb-12 opacity-40">Digital Toolbox</h4>
                     <div className="space-y-4">
-                        <button onClick={handleCopy} className="w-full py-6 bg-white/5 hover:bg-[#E14D4D] rounded-3xl flex items-center justify-center gap-4 transition-all group">
+                        <button onClick={handleCopy} className="w-full py-6 bg-background/5 hover:bg-[#E14D4D] rounded-3xl flex items-center justify-center gap-4 transition-all group">
                             {copied ? <CheckCircle2 className="w-5 h-5 text-green-400" /> : <Copy className="w-5 h-5 group-hover:scale-110 transition-transform" />}
                             <span className="text-[10px] font-black uppercase tracking-widest">{copied ? 'Copied' : 'Copy Data'}</span>
                         </button>
-                        <button onClick={() => window.print()} className="w-full py-6 bg-white/5 hover:bg-white/10 rounded-3xl flex items-center justify-center gap-4 transition-all group">
+                        <button onClick={() => window.print()} className="w-full py-6 bg-background/5 hover:bg-background/10 rounded-3xl flex items-center justify-center gap-4 transition-all group">
                             <Download className="w-5 h-5" />
                             <span className="text-[10px] font-black uppercase tracking-widest">Download PDF</span>
                         </button>
-                        <button className="w-full py-6 bg-white/5 hover:bg-white/10 rounded-3xl flex items-center justify-center gap-4 transition-all group">
+                        <button className="w-full py-6 bg-background/5 hover:bg-background/10 rounded-3xl flex items-center justify-center gap-4 transition-all group">
                             <Share2 className="w-5 h-5" />
                             <span className="text-[10px] font-black uppercase tracking-widest">Share Attribute</span>
                         </button>
@@ -151,8 +151,8 @@ const NameDetailPage = ({ params }) => {
                         </p>
                         <div className="flex justify-center gap-4">
                             <div className="w-2 h-2 rounded-full bg-[#E14D4D]"></div>
-                            <div className="w-2 h-2 rounded-full bg-white/10"></div>
-                            <div className="w-2 h-2 rounded-full bg-white/10"></div>
+                            <div className="w-2 h-2 rounded-full bg-background/10"></div>
+                            <div className="w-2 h-2 rounded-full bg-background/10"></div>
                         </div>
                     </div>
                 </div>

@@ -101,20 +101,20 @@ const BookDetailPage = ({ params }) => {
   );
 
   if (loading && page === 1) return (
-    <div className="min-h-screen bg-white flex justify-center items-center font-black uppercase tracking-[0.5em] text-[10px] text-[#222222]">
+    <div className="min-h-screen bg-background flex justify-center items-center font-black uppercase tracking-[0.5em] text-[10px] text-[var(--secondary)]">
       <div className="flex flex-col items-center gap-6">
-        <Loader2 className="w-12 h-12 text-[#E14D4D] animate-spin" />
+        <Loader2 className="w-12 h-12 text-[var(--primary)] animate-spin" />
         Searching Digital Archives...
       </div>
     </div>
   );
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-background">
       {/* Book Banner */}
-      <section className="bg-[#222222] text-white py-32 relative overflow-hidden">
+      <section className="bg-[var(--secondary)] text-foreground py-32 relative overflow-hidden">
         <div className="container mx-auto px-6 relative z-10">
-          <Link href="/hadith" className="inline-flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.3em] text-slate-400 hover:text-[#E14D4D] transition-colors mb-12">
+          <Link href="/hadith" className="inline-flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.3em] text-slate-400 hover:text-[var(--primary)] transition-colors mb-12">
             <ArrowLeft className="w-4 h-4" /> Back to Collections
           </Link>
           
@@ -123,7 +123,7 @@ const BookDetailPage = ({ params }) => {
             animate={{ opacity: 1, y: 0 }}
             className="max-w-4xl"
           >
-            <div className="w-20 h-2 bg-[#E14D4D] mb-10"></div>
+            <div className="w-20 h-2 bg-[var(--primary)] mb-10"></div>
             <h1 className="text-6xl md:text-8xl font-black uppercase tracking-tighter mb-4 leading-none">
                 {bookInfo?.name || id}
             </h1>
@@ -131,7 +131,7 @@ const BookDetailPage = ({ params }) => {
                 {bookInfo?.arabicName}
             </p>
             <div className="flex items-center gap-6">
-                <span className="bg-white/10 px-6 py-2 rounded-full text-[10px] font-black uppercase tracking-widest">
+                <span className="bg-background/10 px-6 py-2 rounded-full text-[10px] font-black uppercase tracking-widest">
                     {hadiths.length} Hadiths Loaded
                 </span>
                 <span className="text-slate-500 text-[10px] font-black uppercase tracking-widest border-l border-slate-700 pl-6">
@@ -142,26 +142,26 @@ const BookDetailPage = ({ params }) => {
         </div>
         
         {/* Background Decorative element */}
-        <div className="absolute top-0 right-0 p-24 text-[20rem] font-serif italic text-white/5 opacity-[0.03] leading-none select-none pointer-events-none translate-x-1/4">
+        <div className="absolute top-0 right-0 p-24 text-[20rem] font-serif italic text-foreground/5 opacity-[0.03] leading-none select-none pointer-events-none translate-x-1/4">
              {bookInfo?.arabicName || 'الحديث'}
         </div>
       </section>
 
       {/* Search & Statistics */}
-      <section className="bg-slate-50 border-b border-slate-100 sticky top-0 z-40">
+      <section className="bg-slate-50 border-b border-border sticky top-0 z-40">
         <div className="container mx-auto px-6 py-6 flex flex-col md:flex-row gap-6 items-center">
             <div className="relative flex-grow w-full group">
-                <Search className="absolute left-6 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 group-focus-within:text-[#E14D4D] transition-colors" />
+                <Search className="absolute left-6 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 group-focus-within:text-[var(--primary)] transition-colors" />
                 <input 
                     type="text" 
                     placeholder="Search by keyword, topic or Hadith number..."
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
-                    className="w-full bg-white border-2 border-slate-100 rounded-full py-4 pl-14 pr-6 text-sm outline-none focus:border-[#E14D4D] transition-all text-[#222222] font-medium"
+                    className="w-full bg-background border-2 border-border rounded-full py-4 pl-14 pr-6 text-sm outline-none focus:border-[var(--primary)] transition-all text-[var(--secondary)] font-medium"
                 />
             </div>
             <div className="flex gap-4">
-                <button className="flex items-center gap-2 px-8 py-4 bg-white border-2 border-slate-100 rounded-full text-[10px] font-black uppercase tracking-widest text-slate-400 hover:border-[#E14D4D] hover:text-[#E14D4D] transition-all">
+                <button className="flex items-center gap-2 px-8 py-4 bg-background border-2 border-border rounded-full text-[10px] font-black uppercase tracking-widest text-slate-400 hover:border-[var(--primary)] hover:text-[var(--primary)] transition-all">
                     Chapter View <ChevronRight className="w-4 h-4" />
                 </button>
             </div>
@@ -180,36 +180,36 @@ const BookDetailPage = ({ params }) => {
                     animate={{ opacity: 1, x: 0 }}
                     className="group"
                 >
-                    <div className="bg-white p-12 rounded-[3rem] border-2 border-slate-50 hover:border-[#E14D4D]/20 hover:shadow-2xl hover:shadow-slate-100 transition-all duration-500">
+                    <div className="bg-background p-12 rounded-[3rem] border-2 border-slate-50 hover:border-[var(--primary)]/20 hover:shadow-2xl hover:shadow-slate-100 transition-all duration-500">
                         <div className="flex justify-between items-center mb-10">
                             <div className="flex items-center gap-4">
-                                <div className="w-12 h-12 bg-[#222222] text-white rounded-2xl flex items-center justify-center font-black text-sm">
+                                <div className="w-12 h-12 bg-[var(--secondary)] text-foreground rounded-2xl flex items-center justify-center font-black text-sm">
                                     #{h.hadithNumber}
                                 </div>
                                 <div>
-                                    <p className="text-[10px] font-black uppercase tracking-widest text-[#E14D4D]">{h.status || 'Verified'}</p>
+                                    <p className="text-[10px] font-black uppercase tracking-widest text-[var(--primary)]">{h.status || 'Verified'}</p>
                                     <p className="text-[10px] font-black uppercase tracking-widest text-slate-300">Volume 1</p>
                                 </div>
                             </div>
-                            <button className="p-3 text-slate-100 hover:text-[#E14D4D] transition-colors">
+                            <button className="p-3 text-slate-100 hover:text-[var(--primary)] transition-colors">
                                 <Bookmark className="w-5 h-5" />
                             </button>
                         </div>
 
                         <div className="space-y-12">
-                            <p className="text-3xl md:text-4xl text-right font-serif leading-[1.8] text-[#222222] dir-rtl">
+                            <p className="text-3xl md:text-4xl text-right font-serif leading-[1.8] text-[var(--secondary)] dir-rtl">
                                 {h.hadithArabic}
                             </p>
                             
                             {h.hadithUrdu && (
-                              <div className="relative pr-12 border-r-4 border-slate-100 group-hover:border-[#E14D4D] transition-colors text-right mb-8">
+                              <div className="relative pr-12 border-r-4 border-border group-hover:border-[var(--primary)] transition-colors text-right mb-8">
                                 <p className="text-2xl md:text-3xl font-serif text-slate-800 leading-[1.7]">
                                   {h.hadithUrdu}
                                 </p>
                               </div>
                             )}
 
-                            <div className="relative pl-12 border-l-4 border-slate-100 group-hover:border-[#E14D4D] transition-colors">
+                            <div className="relative pl-12 border-l-4 border-border group-hover:border-[var(--primary)] transition-colors">
                                 <p className="text-lg md:text-xl text-slate-600 font-medium leading-[1.6]">
                                     {h.hadithEnglish}
                                 </p>
@@ -228,8 +228,8 @@ const BookDetailPage = ({ params }) => {
            {filteredHadiths.length === 0 && (
              <div className="py-20 text-center">
                 <Search className="w-16 h-16 text-slate-100 mx-auto mb-6" />
-                <h3 className="text-xl font-black text-[#222222] uppercase tracking-tighter">No Hadiths Match Your Search</h3>
-                <button onClick={() => setSearchTerm('')} className="mt-4 text-[#E14D4D] font-black uppercase tracking-widest text-[10px] border-b border-[#E14D4D]">Clear Search</button>
+                <h3 className="text-xl font-black text-[var(--secondary)] uppercase tracking-tighter">No Hadiths Match Your Search</h3>
+                <button onClick={() => setSearchTerm('')} className="mt-4 text-[var(--primary)] font-black uppercase tracking-widest text-[10px] border-b border-[var(--primary)]">Clear Search</button>
              </div>
            )}
 
@@ -237,7 +237,7 @@ const BookDetailPage = ({ params }) => {
              <div className="py-20 text-center">
                <button 
                 onClick={() => setPage(prev => prev + 1)}
-                className="px-12 py-5 bg-[#222222] text-white rounded-full font-black uppercase tracking-[0.2em] text-[10px] hover:bg-[#E14D4D] transition-all duration-300 flex items-center gap-4 mx-auto"
+                className="px-12 py-5 bg-[var(--secondary)] text-foreground rounded-full font-black uppercase tracking-[0.2em] text-[10px] hover:bg-[var(--primary)] transition-all duration-300 flex items-center gap-4 mx-auto"
                >
                  {loading ? <Loader2 className="w-4 h-4 animate-spin" /> : "Load More Hadiths"}
                </button>

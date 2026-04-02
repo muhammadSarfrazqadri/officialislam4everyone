@@ -95,7 +95,7 @@ const BooksPage = () => {
   });
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-background">
       {/* Hero Section */}
       <section className="bg-foreground text-background py-32 relative overflow-hidden">
         <div className="container mx-auto px-6 relative z-10">
@@ -160,24 +160,24 @@ const BooksPage = () => {
                 </div>
             </div>
 
-            <div className="bg-slate-900 text-white p-10 rounded-[3rem] relative overflow-hidden group">
+            <div className="bg-slate-900 text-foreground p-10 rounded-[3rem] relative overflow-hidden group">
                 <div className="relative z-10">
                     <h4 className="text-xl font-black uppercase tracking-tighter mb-4">Request a Book</h4>
                     <p className="text-xs text-slate-400 font-bold mb-8 leading-relaxed">Can't find a specific text? Our librarians will source it for you.</p>
-                    <button className="bg-[#E14D4D] w-full py-4 rounded-xl text-[10px] font-black uppercase tracking-widest hover:scale-105 transition-transform">Submit Request</button>
+                    <button className="bg-[var(--primary)] w-full py-4 rounded-xl text-[10px] font-black uppercase tracking-widest hover:scale-105 transition-transform">Submit Request</button>
                 </div>
-                <Bookmark className="absolute -bottom-6 -right-6 w-32 h-32 text-white/5 -rotate-12 group-hover:rotate-0 transition-transform duration-700" />
+                <Bookmark className="absolute -bottom-6 -right-6 w-32 h-32 text-foreground/5 -rotate-12 group-hover:rotate-0 transition-transform duration-700" />
             </div>
           </aside>
 
           {/* Library Grid */}
           <div className="lg:w-3/4">
              <div className="flex items-center justify-between mb-12 border-b-2 border-slate-50 pb-8">
-                <h2 className="text-2xl font-black text-[#222222] uppercase tracking-tighter">
-                    {activeCategory} <span className="text-[#E14D4D]/40">({filteredBooks.length})</span>
+                <h2 className="text-2xl font-black text-[var(--secondary)] uppercase tracking-tighter">
+                    {activeCategory} <span className="text-[var(--primary)]/40">({filteredBooks.length})</span>
                 </h2>
                 <div className="flex gap-4">
-                    <button className="p-3 bg-slate-50 rounded-xl text-slate-400 hover:text-[#222222] transition-colors"><Filter className="w-5 h-5" /></button>
+                    <button className="p-3 bg-slate-50 rounded-xl text-slate-400 hover:text-[var(--secondary)] transition-colors"><Filter className="w-5 h-5" /></button>
                 </div>
              </div>
 
@@ -190,17 +190,17 @@ const BooksPage = () => {
                         animate={{ opacity: 1, scale: 1 }}
                         exit={{ opacity: 0, scale: 0.9 }}
                         key={book.id} 
-                        className="group bg-white flex flex-col h-full border-2 border-slate-50 rounded-[3rem] overflow-hidden hover:border-[#E14D4D] transition-all duration-500"
+                        className="group bg-card flex flex-col h-full border-2 border-slate-50 rounded-[3rem] overflow-hidden hover:border-[var(--primary)] transition-all duration-500"
                     >
-                        <div className={`h-80 ${book.color} p-12 transition-colors duration-500 group-hover:bg-[#222222] relative overflow-hidden flex items-center justify-center`}>
-                           <div className="w-36 h-52 bg-white shadow-2xl rounded-sm border-r-8 border-[#E14D4D] p-5 flex flex-col justify-between transform -rotate-6 group-hover:rotate-0 group-hover:scale-110 transition-all duration-700 relative z-10">
+                        <div className={`h-80 ${book.color} p-12 transition-colors duration-500 group-hover:bg-[var(--secondary)] relative overflow-hidden flex items-center justify-center`}>
+                           <div className="w-36 h-52 bg-background shadow-2xl rounded-sm border-r-8 border-[var(--primary)] p-5 flex flex-col justify-between transform -rotate-6 group-hover:rotate-0 group-hover:scale-110 transition-all duration-700 relative z-10">
                               <div className="h-2 w-full bg-slate-100 rounded-full"></div>
                               <div className="space-y-1">
                                 <div className="h-1 w-full bg-slate-50"></div>
                                 <div className="h-1 w-2/3 bg-slate-50"></div>
                               </div>
                            </div>
-                           <Book className="absolute -bottom-10 -right-10 w-40 h-40 text-black/5 rotate-12 group-hover:text-white/5 transition-colors" />
+                           <Book className="absolute -bottom-10 -right-10 w-40 h-40 text-black/5 rotate-12 group-hover:text-foreground/5 transition-colors" />
                         </div>
 
                         <div className="p-10 flex flex-col gap-6 flex-grow">
@@ -212,7 +212,7 @@ const BooksPage = () => {
                            </div>
 
                            <div className="space-y-2">
-                                <h4 className="text-xl font-black text-[#222222] leading-[1.1] uppercase tracking-tighter group-hover:text-[#E14D4D] transition-colors">{book.title}</h4>
+                                <h4 className="text-xl font-black text-[var(--secondary)] leading-[1.1] uppercase tracking-tighter group-hover:text-[var(--primary)] transition-colors">{book.title}</h4>
                                 <p className="text-xs text-slate-400 font-bold italic">{book.author}</p>
                            </div>
 
@@ -222,10 +222,10 @@ const BooksPage = () => {
                            </div>
 
                            <div className="pt-8 border-t border-slate-50 mt-auto flex gap-4">
-                              <button className="flex-grow bg-[#222222] text-white py-4 rounded-2xl text-[10px] font-black uppercase tracking-[0.2em] hover:bg-[#E14D4D] transition-all flex items-center justify-center gap-3">
+                              <button className="flex-grow bg-[var(--secondary)] text-foreground py-4 rounded-2xl text-[10px] font-black uppercase tracking-[0.2em] hover:bg-[var(--primary)] transition-all flex items-center justify-center gap-3">
                                  <Eye className="w-4 h-4" /> View
                               </button>
-                              <button className="aspect-square bg-slate-50 text-slate-400 py-4 px-5 rounded-2xl hover:bg-[#E14D4D] hover:text-white transition-all">
+                              <button className="aspect-square bg-slate-50 text-slate-400 py-4 px-5 rounded-2xl hover:bg-[var(--primary)] hover:text-foreground transition-all">
                                  <Download className="w-4 h-4" />
                               </button>
                            </div>
@@ -238,10 +238,10 @@ const BooksPage = () => {
              {filteredBooks.length === 0 && (
                 <div className="py-40 text-center">
                     <Archive className="w-20 h-20 text-slate-100 mx-auto mb-8" />
-                    <p className="text-lg font-black text-[#222222] uppercase tracking-tighter">No volumes found in this collection.</p>
+                    <p className="text-lg font-black text-[var(--secondary)] uppercase tracking-tighter">No volumes found in this collection.</p>
                     <button 
                         onClick={() => {setActiveCategory('All'); setSearchTerm('');}}
-                        className="mt-6 text-[#E14D4D] font-black uppercase tracking-[0.2em] text-[10px] border-b-2 border-[#E14D4D] pb-1"
+                        className="mt-6 text-[var(--primary)] font-black uppercase tracking-[0.2em] text-[10px] border-b-2 border-[var(--primary)] pb-1"
                     >
                         Reset Archive
                     </button>

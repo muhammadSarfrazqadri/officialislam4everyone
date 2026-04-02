@@ -34,7 +34,7 @@ const AcademyPage = () => {
 
   const stats = [
     { label: 'Active Students', value: '15K+', icon: Users, color: 'text-blue-500' },
-    { label: 'Courses', value: '45+', icon: BookOpen, color: 'text-[#E14D4D]' },
+    { label: 'Courses', value: '45+', icon: BookOpen, color: 'text-[var(--primary)]' },
     { label: 'Certifications', value: '10K+', icon: Trophy, color: 'text-orange-500' },
     { label: 'Expert Faculty', value: '25+', icon: UserCheck, color: 'text-emerald-500' }
   ];
@@ -139,7 +139,7 @@ const AcademyPage = () => {
   }, [activeTab, searchTerm]);
 
   return (
-    <div className="min-h-screen bg-[#0A0A0A] text-white selection:bg-[#E14D4D]">
+    <div className="min-h-screen bg-[#0A0A0A] text-foreground selection:bg-[var(--primary)]">
       
       {/* 1. STUDIO HERO SECTION */}
       <section className="relative pt-48 pb-32 overflow-hidden border-b border-white/5">
@@ -149,25 +149,25 @@ const AcademyPage = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <div className="inline-flex items-center gap-3 px-6 py-2 bg-white/5 border border-white/10 rounded-full mb-10 shadow-[0_0_20px_rgba(225,77,77,0.1)]">
-              <Sparkles className="w-3 h-3 text-[#E14D4D]" />
-              <span className="text-[9px] font-black uppercase tracking-[0.4em] text-white/50">Elite Scholar Program 2026</span>
+            <div className="inline-flex items-center gap-3 px-6 py-2 bg-background/5 border border-white/10 rounded-full mb-10 shadow-[0_0_20px_rgba(225,77,77,0.1)]">
+              <Sparkles className="w-3 h-3 text-[var(--primary)]" />
+              <span className="text-[9px] font-black uppercase tracking-[0.4em] text-foreground/50">Elite Scholar Program 2026</span>
             </div>
             
             <h1 className="text-7xl md:text-[10rem] font-black uppercase tracking-tighter leading-[0.8] mb-12 italic">
-              Digital <br /> <span className="text-[#E14D4D] not-italic">Academy.</span>
+              Digital <br /> <span className="text-[var(--primary)] not-italic">Academy.</span>
             </h1>
             
-            <p className="text-xl md:text-2xl text-white/40 font-medium max-w-3xl mx-auto italic mb-16">
+            <p className="text-xl md:text-2xl text-foreground/40 font-medium max-w-3xl mx-auto italic mb-16">
               "Synthesizing classical Islamic pedagogy with modern cognitive tools for the next generation of leadership."
             </p>
 
             <div className="flex flex-wrap justify-center gap-8">
-              <Link href="/academy/admission" className="group px-12 py-6 bg-white text-black rounded-full text-[11px] font-black uppercase tracking-widest hover:bg-[#E14D4D] hover:text-white transition-all transform hover:scale-105 shadow-2xl flex items-center gap-4">
+              <Link href="/academy/admission" className="group px-12 py-6 bg-background text-black rounded-full text-[11px] font-black uppercase tracking-widest hover:bg-[var(--primary)] hover:text-foreground transition-all transform hover:scale-105 shadow-2xl flex items-center gap-4">
                 Initialize Admission
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Link>
-              <button className="px-12 py-6 border border-white/10 rounded-full text-[11px] font-black uppercase tracking-widest hover:bg-white hover:text-black transition-all">
+              <button className="px-12 py-6 border border-white/10 rounded-full text-[11px] font-black uppercase tracking-widest hover:bg-background hover:text-black transition-all">
                 Browse Curriculum
               </button>
             </div>
@@ -188,7 +188,7 @@ const AcademyPage = () => {
               <div key={i} className="text-center space-y-2 group">
                 <stat.icon className={`w-6 h-6 mx-auto mb-4 ${stat.color} opacity-80 group-hover:scale-110 transition-transform`} />
                 <div className="text-4xl md:text-5xl font-black tracking-tighter">{stat.value}</div>
-                <div className="text-[9px] font-black uppercase tracking-[0.3em] text-white/30">{stat.label}</div>
+                <div className="text-[9px] font-black uppercase tracking-[0.3em] text-foreground/30">{stat.label}</div>
               </div>
             ))}
           </div>
@@ -199,30 +199,30 @@ const AcademyPage = () => {
       <section className="py-40 container mx-auto px-6" id="courses">
         <div className="flex flex-col md:flex-row justify-between items-end mb-24 border-b border-white/5 pb-16 gap-10">
           <div className="max-w-xl">
-            <span className="text-[10px] font-black uppercase tracking-[0.5em] text-[#E14D4D] mb-6 block">Structured Learning</span>
+            <span className="text-[10px] font-black uppercase tracking-[0.5em] text-[var(--primary)] mb-6 block">Structured Learning</span>
             <h2 className="text-6xl md:text-8xl font-black uppercase tracking-tighter leading-none italic">
-              Premium <span className="text-white/20">Courses</span>
+              Premium <span className="text-foreground/20">Courses</span>
             </h2>
           </div>
           
           <div className="flex flex-col items-end gap-6 w-full md:w-auto">
             <div className="relative group w-full md:w-80">
-              <Search className="absolute left-5 top-1/2 -translate-y-1/2 w-4 h-4 text-white/20 group-focus-within:text-[#E14D4D] transition-colors" />
+              <Search className="absolute left-5 top-1/2 -translate-y-1/2 w-4 h-4 text-foreground/20 group-focus-within:text-[var(--primary)] transition-colors" />
               <input 
                 type="text" 
                 placeholder="Search Disciplines..." 
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full bg-white/5 border border-white/10 rounded-2xl py-4 pl-14 pr-6 text-xs font-bold tracking-widest uppercase focus:outline-none focus:border-[#E14D4D]/50 transition-all placeholder:text-white/10"
+                className="w-full bg-background/5 border border-white/10 rounded-2xl py-4 pl-14 pr-6 text-xs font-bold tracking-widest uppercase focus:outline-none focus:border-[var(--primary)]/50 transition-all placeholder:text-foreground/10"
               />
             </div>
             
-            <div className="flex bg-white/5 p-1 rounded-2xl border border-white/10 overflow-x-auto no-scrollbar w-full md:w-auto">
+            <div className="flex bg-background/5 p-1 rounded-2xl border border-white/10 overflow-x-auto no-scrollbar w-full md:w-auto">
               {['all', 'language', 'quran', 'fiqh'].map(tab => (
                 <button 
                   key={tab}
                   onClick={() => setActiveTab(tab)}
-                  className={`px-8 py-3 rounded-xl text-[9px] font-black uppercase tracking-widest transition-all whitespace-nowrap ${activeTab === tab ? 'bg-[#E14D4D] text-white shadow-xl shadow-[#E14D4D]/20' : 'text-white/30 hover:text-white'}`}
+                  className={`px-8 py-3 rounded-xl text-[9px] font-black uppercase tracking-widest transition-all whitespace-nowrap ${activeTab === tab ? 'bg-[var(--primary)] text-foreground shadow-xl shadow-[var(--primary)]/20' : 'text-foreground/30 hover:text-foreground'}`}
                 >
                   {tab}
                 </button>
@@ -243,42 +243,42 @@ const AcademyPage = () => {
                 transition={{ duration: 0.4 }}
                 className="group"
               >
-                <div className="bg-[#111111] border border-white/5 rounded-[3rem] overflow-hidden transition-all duration-500 hover:border-[#E14D4D]/30 hover:-translate-y-4">
+                <div className="bg-[#111111] border border-white/5 rounded-[3rem] overflow-hidden transition-all duration-500 hover:border-[var(--primary)]/30 hover:-translate-y-4">
                   <div className="h-64 overflow-hidden relative grayscale group-hover:grayscale-0 transition-all duration-700">
                     <img src={course.image} alt={course.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-[2000ms]" />
-                    <div className="absolute top-6 left-6 px-4 py-2 bg-black/60 backdrop-blur-xl border border-white/10 rounded-xl text-[8px] font-black uppercase tracking-widest">
+                    <div className="absolute top-6 left-6 px-4 py-2 bg-muted/60 backdrop-blur-xl border border-white/10 rounded-xl text-[8px] font-black uppercase tracking-widest">
                       {course.level}
                     </div>
                   </div>
                   
                   <div className="p-10 space-y-6">
                     <div className="flex justify-between items-center">
-                      <span className="text-[8px] font-black uppercase tracking-[0.4em] text-[#E14D4D]">Module 0{course.id}</span>
+                      <span className="text-[8px] font-black uppercase tracking-[0.4em] text-[var(--primary)]">Module 0{course.id}</span>
                       <div className="flex items-center gap-2">
                          <Star className="w-3 h-3 text-yellow-500 fill-current" />
                          <span className="text-xs font-bold">{course.rating}</span>
                       </div>
                     </div>
                     
-                    <h3 className="text-3xl font-black uppercase tracking-tighter leading-none group-hover:text-[#E14D4D] transition-colors">
+                    <h3 className="text-3xl font-black uppercase tracking-tighter leading-none group-hover:text-[var(--primary)] transition-colors">
                       {course.title}
                     </h3>
 
-                    <p className="text-white/60 text-[10px] font-bold uppercase tracking-widest flex items-center gap-2">
+                    <p className="text-foreground/60 text-[10px] font-bold uppercase tracking-widest flex items-center gap-2">
                        <UserCheck className="w-3 h-3 text-blue-500" />
                        {course.instructor}
                     </p>
                     
-                    <p className="text-white/40 text-sm font-medium leading-relaxed italic line-clamp-2">
+                    <p className="text-foreground/40 text-sm font-medium leading-relaxed italic line-clamp-2">
                       {course.desc}
                     </p>
 
                     <div className="flex items-center justify-between pt-6 border-t border-white/5">
                       <div className="flex items-center gap-3">
-                         <Clock className="w-4 h-4 text-white/20" />
-                         <span className="text-[9px] font-black uppercase tracking-widest text-white/40">{course.duration}</span>
+                         <Clock className="w-4 h-4 text-foreground/20" />
+                         <span className="text-[9px] font-black uppercase tracking-widest text-foreground/40">{course.duration}</span>
                       </div>
-                      <Link href={`/academy/${course.id}`} className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center hover:bg-white hover:text-black transition-all">
+                      <Link href={`/academy/${course.id}`} className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center hover:bg-background hover:text-black transition-all">
                         <ChevronRight className="w-5 h-5" />
                       </Link>
                     </div>
@@ -293,8 +293,8 @@ const AcademyPage = () => {
                animate={{ opacity: 1 }}
                className="col-span-full py-20 text-center border-2 border-dashed border-white/5 rounded-[3rem]"
             >
-               <Search className="w-12 h-12 mx-auto text-white/10 mb-4" />
-               <p className="text-white/30 uppercase font-black text-xs tracking-widest italic">No matching courses found in this category.</p>
+               <Search className="w-12 h-12 mx-auto text-foreground/10 mb-4" />
+               <p className="text-foreground/30 uppercase font-black text-xs tracking-widest italic">No matching courses found in this category.</p>
             </motion.div>
           )}
         </motion.div>
@@ -307,15 +307,15 @@ const AcademyPage = () => {
              <div className="text-center md:text-left">
                 <span className="text-[10px] font-black uppercase tracking-[0.5em] text-blue-500 mb-6 block">World-Class Faculty</span>
                 <h2 className="text-6xl md:text-8xl font-black uppercase tracking-tighter leading-none italic">
-                  Meet Your <span className="text-white/20">Mentors</span>
+                  Meet Your <span className="text-foreground/20">Mentors</span>
                 </h2>
              </div>
              
              <div className="flex gap-4">
-                <button className="teacher-prev w-16 h-16 rounded-full border border-white/10 flex items-center justify-center hover:bg-white hover:text-black transition-all z-20">
+                <button className="teacher-prev w-16 h-16 rounded-full border border-white/10 flex items-center justify-center hover:bg-background hover:text-black transition-all z-20">
                   <ChevronLeft className="w-6 h-6" />
                 </button>
-                <button className="teacher-next w-16 h-16 rounded-full border border-white/10 flex items-center justify-center hover:bg-white hover:text-black transition-all z-20">
+                <button className="teacher-next w-16 h-16 rounded-full border border-white/10 flex items-center justify-center hover:bg-background hover:text-black transition-all z-20">
                   <ChevronRight className="w-6 h-6" />
                 </button>
              </div>
@@ -335,32 +335,32 @@ const AcademyPage = () => {
           >
             {teachers.map((teacher, i) => (
               <SwiperSlide key={i}>
-                <div className="flex flex-col lg:flex-row gap-12 items-center bg-white/[0.02] p-8 lg:p-20 rounded-[4rem] border border-white/5 backdrop-blur-3xl">
+                <div className="flex flex-col lg:flex-row gap-12 items-center bg-background/[0.02] p-8 lg:p-20 rounded-[4rem] border border-white/5 backdrop-blur-3xl">
                   <div className="w-full lg:w-1/2 aspect-square rounded-[3rem] overflow-hidden grayscale hover:grayscale-0 transition-all duration-1000 shadow-[0_0_50px_rgba(0,0,0,0.5)] border border-white/10">
                      <img src={teacher.image} alt={teacher.name} className="w-full h-full object-cover" />
                   </div>
                   
                   <div className="w-full lg:w-1/2 space-y-8">
-                     <Quote className="w-16 h-16 text-[#E14D4D] opacity-10" />
+                     <Quote className="w-16 h-16 text-[var(--primary)] opacity-10" />
                      <div>
                         <h3 className="text-5xl md:text-6xl font-black uppercase tracking-tighter mb-4 italic leading-tight">{teacher.name}</h3>
-                        <p className="bg-[#E14D4D]/10 text-[#E14D4D] inline-block px-4 py-1.5 rounded-lg text-[9px] font-black uppercase tracking-[0.3em]">{teacher.role}</p>
+                        <p className="bg-background text-[var(--primary)] inline-block px-4 py-1.5 rounded-lg text-[9px] font-black uppercase tracking-[0.3em]">{teacher.role}</p>
                      </div>
                      
-                     <div className="bg-white/5 p-8 rounded-3xl border border-white/5 space-y-2">
-                        <p className="text-[10px] font-black uppercase tracking-[0.3em] text-white/30">Vertical Specialization</p>
+                     <div className="bg-background/5 p-8 rounded-3xl border border-white/5 space-y-2">
+                        <p className="text-[10px] font-black uppercase tracking-[0.3em] text-foreground/30">Vertical Specialization</p>
                         <p className="text-lg font-bold text-blue-400">{teacher.specialty}</p>
                      </div>
 
-                     <p className="text-xl md:text-2xl text-white/40 leading-relaxed italic font-medium">
+                     <p className="text-xl md:text-2xl text-foreground/40 leading-relaxed italic font-medium">
                        "{teacher.bio}"
                      </p>
 
                      <div className="flex items-center gap-6 pt-10">
-                        <button className="px-12 py-5 bg-white text-black rounded-full text-[10px] font-black uppercase tracking-widest hover:bg-[#E14D4D] hover:text-white transition-all transform hover:scale-105 shadow-2xl">
+                        <button className="px-12 py-5 bg-background text-black rounded-full text-[10px] font-black uppercase tracking-widest hover:bg-[var(--primary)] hover:text-foreground transition-all transform hover:scale-105 shadow-2xl">
                            Curriculum Insight
                         </button>
-                        <button className="w-16 h-16 rounded-full border border-white/10 flex items-center justify-center hover:bg-white hover:text-black transition-all">
+                        <button className="w-16 h-16 rounded-full border border-white/10 flex items-center justify-center hover:bg-background hover:text-black transition-all">
                            <Globe className="w-5 h-5" />
                         </button>
                      </div>
@@ -373,7 +373,7 @@ const AcademyPage = () => {
           <div className="swiper-pagination-custom flex justify-center gap-4 mt-20"></div>
         </div>
 
-        <div className="absolute -bottom-20 -right-20 text-[30rem] font-black text-white/[0.02] italic pointer-events-none select-none">
+        <div className="absolute -bottom-20 -right-20 text-[30rem] font-black text-foreground/[0.02] italic pointer-events-none select-none">
            STAFF
         </div>
       </section>
@@ -383,16 +383,16 @@ const AcademyPage = () => {
         <motion.div
            initial={{ opacity: 0, scale: 0.95 }}
            whileInView={{ opacity: 1, scale: 1 }}
-           className="bg-[#E14D4D] p-16 md:p-32 rounded-[6rem] shadow-[0_0_100px_rgba(225,77,77,0.2)] relative overflow-hidden group"
+           className="bg-[var(--primary)] p-16 md:p-32 rounded-[6rem] shadow-[0_0_100px_rgba(225,77,77,0.2)] relative overflow-hidden group"
         >
            <div className="relative z-10">
               <h2 className="text-7xl md:text-9xl font-black uppercase tracking-tighter leading-none mb-12 italic">
                 Secure Your <br /> Future.
               </h2>
-              <p className="text-white/80 text-xl md:text-2xl font-medium max-w-3xl mx-auto italic mb-16 px-4">
+              <p className="text-foreground/80 text-xl md:text-2xl font-medium max-w-3xl mx-auto italic mb-16 px-4">
                 Registration for the Fall 2026 Batch is now open. Limited seats available for our specialized tracks.
               </p>
-              <Link href="/academy/admission" className="px-20 py-10 bg-white text-black rounded-full text-xs font-black uppercase tracking-widest hover:bg-black hover:text-white transition-all transform hover:scale-110 inline-block shadow-2xl">
+              <Link href="/academy/admission" className="px-20 py-10 bg-background text-black rounded-full text-xs font-black uppercase tracking-widest hover:bg-muted hover:text-foreground transition-all transform hover:scale-110 inline-block shadow-2xl">
                  Apply For Admission
               </Link>
            </div>
@@ -413,7 +413,7 @@ const AcademyPage = () => {
           transition: all 0.5s ease-in-out !important;
         }
         .swiper-pagination-bullet-active {
-          background: #E14D4D !important;
+          background: var(--primary) !important;
           width: 40px !important;
         }
         .no-scrollbar::-webkit-scrollbar {

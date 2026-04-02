@@ -144,25 +144,25 @@ const SectionPreview = ({ number, title, subtitle, desc, icon: Icon, link, dark 
 
           <div className="flex flex-wrap gap-4">
             {['Verified Chain', 'Modern Typography', 'Mobile First'].map(tag => (
-              <div key={tag} className="px-6 py-2.5 bg-current/[0.03] backdrop-blur-sm border border-current/[0.08] rounded-2xl text-[10px] font-black uppercase tracking-[0.2em] opacity-50 hover:opacity-100 dark:hover:bg-white/5 transition-all">
+              <div key={tag} className="px-6 py-2.5 bg-current/[0.03] backdrop-blur-sm border border-current/[0.08] rounded-2xl text-[10px] font-black uppercase tracking-[0.2em] opacity-50 hover:opacity-100 dark:hover:bg-background/5 transition-all">
                 {tag}
               </div>
             ))}
           </div>
 
           <Link href={link} className="inline-flex items-center gap-6 py-6 px-10 rounded-full bg-current text-current-inverse hover:translate-x-2 transition-all duration-500 group overflow-hidden relative shadow-2xl">
-            <span className={`text-[12px] font-black uppercase tracking-widest ${dark ? 'text-black group-hover:text-white' : 'text-white' } relative z-10`}>Explore Collection</span>
-            <div className={`w-10 h-10 rounded-full flex items-center justify-center transition-all duration-500 relative z-10 ${dark ? 'bg-black text-white group-hover:bg-[#E14D4D]' : 'bg-white text-black group-hover:text-[#E14D4D]'}`}>
+            <span className={`text-[12px] font-black uppercase tracking-widest ${dark ? 'text-black group-hover:text-foreground' : 'text-foreground' } relative z-10`}>Explore Collection</span>
+            <div className={`w-10 h-10 rounded-full flex items-center justify-center transition-all duration-500 relative z-10 ${dark ? 'bg-background text-foreground group-hover:bg-[var(--primary)]' : 'bg-primary text-primary-foreground group-hover:text-primary'}`}>
               <ArrowUpRight className="w-5 h-5 group-hover:rotate-45 transition-transform" />
             </div>
-            {dark && <div className="absolute inset-0 bg-white transition-all duration-500 translate-x-[-101%] group-hover:translate-x-0 group-hover:bg-[#E14D4D]"></div>}
+            {dark && <div className="absolute inset-0 bg-background transition-all duration-500 translate-x-[-101%] group-hover:translate-x-0 group-hover:bg-[var(--primary)]"></div>}
           </Link>
         </div>
 
         <div className="relative aspect-square md:aspect-video lg:aspect-square group cursor-pointer order-1 lg:order-2">
           <motion.div 
             whileHover={{ scale: 0.98 }}
-            className={`absolute inset-0 ${dark ? 'bg-white/[0.02]' : 'bg-black/[0.02]'} border border-current/[0.05] rounded-[4rem] group-hover:bg-[#E14D4D]/5 transition-all duration-700`}
+            className={`absolute inset-0 ${dark ? 'bg-background/[0.02]' : 'bg-muted/[0.02]'} border border-current/[0.05] rounded-[4rem] group-hover:bg-[var(--primary)]/5 transition-all duration-700`}
           />
           <div className="relative h-full flex items-center justify-center overflow-hidden rounded-[4rem]">
             <Icon className="w-96 h-96 opacity-[0.03] absolute -right-20 -bottom-20 rotate-[-15deg] group-hover:rotate-0 transition-all duration-1000" />
@@ -170,12 +170,12 @@ const SectionPreview = ({ number, title, subtitle, desc, icon: Icon, link, dark 
                <motion.div 
                  initial={{ scale: 1 }}
                  whileHover={{ scale: 1.1, rotate: 12 }}
-                 className={`w-36 h-36 mx-auto rounded-[3rem] ${dark ? 'bg-black shadow-[0_40px_100px_rgba(0,0,0,0.5)]' : 'bg-white shadow-[0_40px_100px_rgba(0,0,0,0.1)]'} flex items-center justify-center border border-current/[0.08] relative`}
+                 className={`w-36 h-36 mx-auto rounded-[3rem] ${dark ? 'bg-muted shadow-[0_40px_100px_rgba(0,0,0,0.5)]' : 'bg-background shadow-[0_40px_100px_rgba(0,0,0,0.1)]'} flex items-center justify-center border border-current/[0.08] relative`}
                >
-                 <Icon className="w-14 h-14 text-[#E14D4D]" />
-                 <div className="absolute -top-2 -right-2 w-4 h-4 rounded-full bg-[#E14D4D] animate-ping opacity-20" />
+                 <Icon className="w-14 h-14 text-primary" />
+                 <div className="absolute -top-2 -right-2 w-4 h-4 rounded-full bg-[var(--primary)] animate-ping opacity-20" />
                </motion.div>
-               <div className="text-[11px] font-black uppercase tracking-[0.3em] opacity-40 group-hover:opacity-100 group-hover:text-[#E14D4D] transition-all">Secure Portal</div>
+               <div className="text-[11px] font-black uppercase tracking-[0.3em] opacity-40 group-hover:opacity-100 group-hover:text-primary transition-all">Secure Portal</div>
             </div>
           </div>
         </div>
@@ -331,7 +331,7 @@ export default function Home() {
       <section className="py-60 container mx-auto px-6 text-center relative overflow-hidden">
         {/* Decorative Background for CTA */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full pointer-events-none opacity-20">
-           <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,#E14D4D_0%,transparent_70%)] blur-[100px] scale-150 animate-pulse" />
+           <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,var(--primary)_0%,transparent_70%)] blur-[100px] scale-150 animate-pulse" />
         </div>
 
         <div className="max-w-5xl mx-auto space-y-16 relative z-10">
@@ -340,24 +340,24 @@ export default function Home() {
             whileInView={{ y: 0, opacity: 1 }}
             className="text-6xl md:text-9xl font-black uppercase tracking-tighter leading-none"
           >
-            Start Your <br /> <span className="text-[#E14D4D] italic underline decoration-white/10 underline-offset-[20px]">Journey.</span>
+            Start Your <br /> <span className="text-primary italic underline decoration-border underline-offset-[20px]">Journey.</span>
           </motion.h2>
           
-          <p className="text-xl md:text-3xl font-medium text-white/50 leading-tight max-w-3xl mx-auto">
+          <p className="text-xl md:text-3xl font-medium text-muted-foreground leading-tight max-w-3xl mx-auto">
             Experience the fusion of sacred wisdom and modern digital excellence in a single, secure sanctuary for the soul.
           </p>
           
           <div className="flex flex-wrap justify-center gap-8 pt-12">
-            <Link href="/academy/admission" className="group relative px-14 py-7 bg-white text-black rounded-full font-black uppercase text-[12px] tracking-[0.2em] transform hover:scale-110 active:scale-95 transition-all shadow-[0_30px_60px_rgba(255,255,255,0.15)] flex items-center gap-4 overflow-hidden">
-              <span className="relative z-10 group-hover:text-white transition-colors">Apply for Admission</span>
-              <div className="w-10 h-10 rounded-full bg-black/5 flex items-center justify-center relative z-10 group-hover:bg-white group-hover:text-black transition-all">
+            <Link href="/academy/admission" className="group relative px-14 py-7 bg-primary text-primary-foreground rounded-full font-black uppercase text-[12px] tracking-[0.2em] transform hover:scale-110 active:scale-95 transition-all shadow-[0_30px_60px_rgba(255,255,255,0.15)] flex items-center gap-4 overflow-hidden">
+              <span className="relative z-10 group-hover:text-foreground transition-colors">Apply for Admission</span>
+              <div className="w-10 h-10 rounded-full bg-muted flex items-center justify-center relative z-10 group-hover:bg-background group-hover:text-black transition-all">
                 <ChevronRight className="w-5 h-5" />
               </div>
-              <div className="absolute inset-0 bg-[#E14D4D] translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
+              <div className="absolute inset-0 bg-[var(--primary)] translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
             </Link>
             
-            <div className="flex items-center gap-4 text-white/30 bg-white/5 px-10 py-5 rounded-full border border-white/5 backdrop-blur-md">
-               <ShieldCheck className="w-6 h-6 text-[#E14D4D]" />
+            <div className="flex items-center gap-4 text-muted-foreground bg-muted border-border px-10 py-5 rounded-full border backdrop-blur-md">
+               <ShieldCheck className="w-6 h-6 text-primary" />
                <span className="text-[10px] font-black uppercase tracking-[0.3em]">Verified Platform</span>
             </div>
           </div>
