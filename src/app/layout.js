@@ -15,8 +15,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "Pure Soul - Digital Sanctum",
-  description: "Synthesizing ancient wisdom with avant-garde digital engineering.",
+  title: "Islam4Everyone - Authentic Islamic Resources for All",
+  description: "Discover a comprehensive digital library of authentic Islamic knowledge, including Quran, Hadith, Fatwa, and educational courses, designed to serve the global Muslim community with free and accessible resources.",
 };
 
 export default function RootLayout({ children }) {
