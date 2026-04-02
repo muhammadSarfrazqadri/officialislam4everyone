@@ -150,10 +150,10 @@ const SectionPreview = ({ number, title, subtitle, desc, icon: Icon, link, dark 
             ))}
           </div>
 
-          <Link href={link} className="inline-flex items-center gap-6 py-6 px-10 rounded-full bg-current text-current-inverse hover:translate-x-2 transition-all duration-500 group overflow-hidden relative shadow-2xl">
-            <span className={`text-[12px] font-black uppercase tracking-widest ${dark ? 'text-black group-hover:text-foreground' : 'text-foreground' } relative z-10`}>Explore Collection</span>
+          <Link href={link} className="inline-flex items-center gap-6 py-6 px-10 rounded-full bg-muted text-current-inverse hover:translate-x-2 transition-all duration-500 group overflow-hidden relative shadow-2xl">
+            <span className={`text-foreground font-black uppercase tracking-widest ${dark ? 'text-black group-hover:text-foreground' : 'text-foreground' } relative z-10`}>Explore Collection</span>
             <div className={`w-10 h-10 rounded-full flex items-center justify-center transition-all duration-500 relative z-10 ${dark ? 'bg-background text-foreground group-hover:bg-[var(--primary)]' : 'bg-primary text-primary-foreground group-hover:text-primary'}`}>
-              <ArrowUpRight className="w-5 h-5 group-hover:rotate-45 transition-transform" />
+              <ArrowUpRight className="w-5 h-5 text-foreground group-hover:rotate-45 transition-all" />
             </div>
             {dark && <div className="absolute inset-0 bg-background transition-all duration-500 translate-x-[-101%] group-hover:translate-x-0 group-hover:bg-[var(--primary)]"></div>}
           </Link>
