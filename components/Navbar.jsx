@@ -1,282 +1,187 @@
-'use client';
+'use client'
+import { motion, animate } from "framer-motion";
+import AnimatedButton, { primaryButton } from "../components/Buttons";
+import { Button } from "@/components/ui/button";
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
+import { useState } from "react";
+import { Heart, GraduationCap, Menu, X } from "lucide-react";
+import KhutbaaImage from "../public/khutbaa.png"
+import BismillahCaligraphy from "../public/bismillahCaligraphy.png"
+import Islam4everyoneLogo from "../public/isalm-for-everyone-logo2.png"
+import Image from "next/image";
 
-import React, { useEffect, useState, useRef } from 'react';
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
-import { Search, Menu, X, ChevronDown } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { ThemeToggle } from '../src/components/theme-toggle';
 
 const Navbar = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  // const [isVisible, setIsVisible] = useState(true);
-  // const [lastScrollY, setLastScrollY] = useState(0);
-  const pathname = usePathname();
-
-const lastScrollY = useRef(0);
-const [isVisible, setIsVisible] = useState(true);
-
-useEffect(() => {
-  const controlNavbar = () => {
-    const currentScrollY = window.scrollY;
-
-    // Ignore very small scrolls (IMPORTANT)
-    if (Math.abs(currentScrollY - lastScrollY.current) < 10) return;
-
-    if (currentScrollY > lastScrollY.current && currentScrollY > 70) {
-      // scroll down
-      setIsVisible(false);
-    } else if (currentScrollY < lastScrollY.current) {
-      // scroll up
-      setIsVisible(true);
-    }
-
-    lastScrollY.current = currentScrollY;
-  };
-
-  window.addEventListener('scroll', controlNavbar);
-
-  return () => {
-    window.removeEventListener('scroll', controlNavbar);
-  };
-}, []);
-
-  const topNavItems = [
-    { label: 'Home', link: '/' },
-    { 
-      label: 'Quran', 
-      link: '/quran',
+  const [language, setLanguage] = useState("English | انگریزی");
+  const [open, setOpen] = useState(false);
+  const navItems = [
+    { name: "Home", href: "/" },
+    { name: "Quran", href: "/quran" },
+    { name: "Hadith", href: "/hadith" },
+    {
+      name: "Academy",
+      href: "/academy",
       dropdown: [
-        { label: 'Read Quran', link: '/quran' },
-        { label: 'Translations', link: '/quran?view=translations' },
-        { label: 'Audio Recitation', link: '/quran?view=audio' },
-        { label: 'Tafsir Study', link: '/quran?view=tafsir' },
+        { name: "Quran Course", href: "/quran-course" },
+        { name: "Hadith Course", href: "/hadith-course" },
+        { name: "Tajweed Course", href: "/tajweed-course" }
       ]
     },
-    { 
-      label: 'Hadith', 
-      link: '/hadith',
-      dropdown: [
-        { label: 'Bukhari', link: '/hadith/bukhari' },
-        { label: 'Muslim', link: '/hadith/muslim' },
-        { label: 'Sunan Abudawud', link: '/hadith/abudawud' },
-        { label: 'Hadith Research', link: '/hadith' },
-      ]
-    },
-    { 
-      label: 'Resources', 
-      link: '#',
-      dropdown: [
-        { label: 'Books Library', link: '/books' },
-        { label: 'Fatwa Archive', link: '/fatwa' },
-        { label: 'Islamic Names', link: '/names' },
-        { label: 'Multimedia', link: '/media' },
-      ]
-    },
-    { 
-      label: 'Academy', 
-      link: '/academy',
-      dropdown: [
-        { label: 'Online Courses', link: '/academy' },
-        { label: 'Admission Page', link: '/academy/admission' },
-        { label: 'Learning Portal', link: '/academy/portal' },
-        { label: 'Scholarship', link: '/academy/scholarship' },
-      ]
-    },
-    { 
-      label: 'More', 
-      link: '#',
-      dropdown: [
-        { label: 'About Us', link: '/about' },
-        { label: 'Contact Us', link: '/contact' },
-        { label: 'Privacy Policy', link: '/privacy' },
-        { label: 'Terms of Use', link: '/terms' },
-        { label: 'Platform Features', link: '/features' },
-      ]
-    },
+    { name: "Names", href: "/names" },
+    { name: "Fatwa", href: "/fatwa" },
+    { name: "Articles", href: "/articles" },
   ];
 
-  const [activeDropdown, setActiveDropdown] = useState(null);
-
   return (
-    <nav className="w-full bg-background font-sans border-b border-border shadow-sm sticky top-0 z-50 transition-colors duration-500">
-      {/* Top Banner Text with background animation */}
-      <AnimatePresence>
-        {isVisible && (
-          <motion.div 
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
-            className="hidden md:flex justify-center bg-muted text-foreground/80 text-sm font-medium border-b border-border overflow-hidden"
-          >
-            <div className="py-2">
-              <span className="rtl">الحمد للہ رب العالمین، والصلاة والسلام علی سیدنا محمد وآلہ وصحبہ أجمعین</span>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+    <>
 
-      {/* Main Container */}
-      <div className="container mx-auto px-4">
-        {/* Brand & Main Links (Desktop) */}
-        <div className="hidden lg:flex items-center justify-between py-6">
-          {/* Logo Section */}
-          <motion.div 
-            whileHover={{ scale: 1.05 }}
-            className="flex items-center gap-2 cursor-pointer transition-all"
-          >
-            <Link href="/" className="flex flex-col items-start relative group">
-              <div className="w-1.5 h-1.5 rounded-full bg-primary absolute -top-1 right-0 group-hover:scale-150 transition-transform"></div>
-              <p className='text-3xl font-black text-foreground tracking-tighter uppercase italic'>
-                Islam<span className="text-primary not-italic">4Everyone</span>
-              </p>
-            </Link>
-          </motion.div>
+      {/* Top Header */}
+      <nav className=" bg-foreground bg-white border-b-3 border-white/90 md:bg-foreground shadow-xl shadow-black flex items-center justify-around text-xs text-background">
+        {/* Desktop Image */}
+        <Image
+          src={KhutbaaImage}
+          alt="Khutbaa"
+          className="hidden md:block h-[30px] w-auto"
+        />
 
-          {/* Nav Items Group */}
-          <div className="flex items-center gap-2 bg-muted p-1.5 rounded-2xl border border-border">
-            {topNavItems.map((item) => (
-              <div
-                key={item.label}
-                className="relative group"
-                onMouseEnter={() => setActiveDropdown(item.label)}
-                onMouseLeave={() => setActiveDropdown(null)}
+        {/* Mobile + Tablet Image */}
+        <Image
+          src={BismillahCaligraphy}
+          alt="Khutbaa"
+          className="block md:hidden h-[30px] w-auto"
+        />
+
+
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <Button size="sm" className="bg-foreground/60 text-background p-5 border-border hover:bg-foreground/90 hover:text-red-500 w-[150px]">
+              {language}
+            </Button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent className="bg-popover text-popover-foreground">
+            <DropdownMenuItem onClick={() => setLanguage("English | انگریزی")}>
+              English | انگریزی
+            </DropdownMenuItem>
+            <DropdownMenuSeparator />
+            <DropdownMenuItem onClick={() => setLanguage("Urdu | اردو")}>
+              Urdu | اردو
+            </DropdownMenuItem>
+            <DropdownMenuSeparator />
+            <DropdownMenuItem onClick={() => setLanguage("Arabic | عربی")}>
+              Arabic | عربی
+            </DropdownMenuItem>
+
+          </DropdownMenuContent>
+        </DropdownMenu>
+      </nav>
+
+      <div className="relative overflow-hidden border-b-4 border-white/90 bg-gradient-to-r from-primary via-secondary to-primary h-[2em] md:h-[2.5em] flex items-center border-y border-white/10">
+        {/* Animated Shine Effect */}
+        <motion.div
+          animate={{ x: ["-100%", "100%"] }}
+          transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
+          className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent w-1/2 skew-x-12"
+        />
+
+        <div className="relative w-full overflow-hidden whitespace-nowrap">
+          <motion.div
+            animate={{ x: [0, -1000] }}
+            transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+            className="inline-block"
+          >
+            <span className="text-white font-medium tracking-wide px-4 uppercase text-[10px] md:text-xs">
+              Welcome to Official Islam 4 Everyone • Authentic Islamic Resources • Quran • Hadith • Academy • Fatwa • Islamic Names • Articles •
+            </span>
+            <span className="text-white font-medium tracking-wide px-4 uppercase text-[10px] md:text-xs">
+              Welcome to Official Islam 4 Everyone • Authentic Islamic Resources • Quran • Hadith • Academy • Fatwa • Islamic Names • Articles •
+            </span>
+          </motion.div>
+        </div>
+      </div>
+
+      {/* Navigation */}
+      <nav className="bg-secondary/80 shadow-lg shadow-primary/20 border-b border-border dark:shadow-black/50 min-h-[5em] flex items-center justify-around transition-colors duration-500">
+
+        {/* TOP BAR */}
+        <div className="max-w-7xl mx-auto px-4 py-3 flex gap-2 md:gap-8 flex-wrap md:flex-nowrap items-center text-foreground">
+
+          {/* Left */}
+          <div className="w-full md:w-[40%] flex justify-center md:justify-start gap-2 flex-wrap md:flex-nowrap mb-2 md:mb-0">
+            <a href="/quran">
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="bg-primary text-primary-foreground min-w-[6.5em] px-4 py-2 whitespace-nowrap rounded-md transition-all hover:bg-primary/90 cursor-pointer"
               >
-                <Link href={item.link}>
-                  <motion.div
-                    whileHover={{ y: -1 }}
-                    whileTap={{ scale: 0.98 }}
-                    className={`
-                      relative px-5 py-2.5 rounded-xl text-[11px] font-black uppercase tracking-widest transition-all duration-300 cursor-pointer flex items-center gap-2
-                      ${pathname === item.link ? 'bg-primary text-primary-foreground shadow-xl' : 'text-muted-foreground hover:text-foreground hover:bg-background'}
-                    `}
-                  >
-                    {item.label}
-                    {item.dropdown && (
-                      <ChevronDown className={`w-3 h-3 transition-transform duration-300 ${activeDropdown === item.label ? 'rotate-180' : ''}`} />
-                    )}
-                  </motion.div>
-                </Link>
-
-                {/* Dropdown Menu */}
-                <AnimatePresence>
-                  {item.dropdown && activeDropdown === item.label && (
-                    <motion.div
-                      initial={{ opacity: 0, y: 15, scale: 0.95 }}
-                      animate={{ opacity: 1, y: 0, scale: 1 }}
-                      exit={{ opacity: 0, y: 10, scale: 0.95 }}
-                      transition={{ duration: 0.2, ease: "easeOut" }}
-                      className="absolute left-0 mt-2 w-56 bg-popover rounded-2xl border border-border shadow-2xl p-2 z-[60]"
-                    >
-                      <div className="flex flex-col gap-1">
-                        {item.dropdown.map((subItem) => (
-                          <Link key={subItem.label} href={subItem.link}>
-                            <motion.div
-                              whileHover={{ x: 4 }}
-                              className="px-4 py-3 rounded-xl text-[10px] font-bold uppercase tracking-widest text-muted-foreground hover:text-primary hover:bg-accent transition-all flex items-center justify-between group/sub"
-                            >
-                              {subItem.label}
-                              <div className="w-1 h-1 rounded-full bg-primary opacity-0 group-hover/sub:opacity-100 transition-opacity"></div>
-                            </motion.div>
-                          </Link>
-                        ))}
-                      </div>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </div>
-            ))}
-          </div>
-
-          {/* Action Buttons */}
-          <div className="flex items-center gap-4">
-            <ThemeToggle />
-            <motion.button 
+                Al Quran
+              </motion.button>
+            </a>
+            <a href="/hadith">
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="bg-primary text-primary-foreground min-w-[6.5em] px-4 py-2 whitespace-nowrap rounded-md transition-all hover:bg-primary/90 cursor-pointer"
+              >
+                Hadith
+              </motion.button>
+            </a>
+            <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="bg-primary text-primary-foreground px-8 py-3 rounded-full text-[10px] font-black uppercase tracking-widest shadow-lg hover:shadow-primary/20 hover:opacity-90 transition-all"
+              className="bg-foreground text-background min-w-[7em] px-4 py-2 whitespace-nowrap rounded-md transition-all hover:bg-foreground/90 cursor-pointer"
             >
-              Portal Access
+              Academy
             </motion.button>
           </div>
-        </div>
 
-        {/* Mobile Navbar Header */}
-        <div className="lg:hidden flex items-center justify-between py-6">
-          <Link href="/">
-            <p className='text-2xl font-black text-foreground tracking-tighter uppercase italic'>
-              Islam<span className="text-primary not-italic">4Everyone</span>
-            </p>
-          </Link>
-          
-          <div className="flex items-center gap-4">
-             <ThemeToggle />
-             <button 
-               onClick={() => setIsMenuOpen(!isMenuOpen)}
-               className="p-3 bg-muted rounded-2xl text-muted-foreground"
-             >
-               {isMenuOpen ? <X className="w-6 h-6"/> : <Menu className="w-6 h-6"/>}
-             </button>
+          {/* Logo */}
+          <div className="w-full md:w-[20%] items-center flex justify-center mb-2 md:mb-0">
+            <a href="/" className="group flex items-center gap-1">
+              <Image
+                src={Islam4everyoneLogo}
+                alt="Islam4everyone Logo"
+                className="h-[40px] w-auto"
+              />
+            </a>
           </div>
+
+          {/* Right */}
+          <div className="w-full md:w-[40%] flex justify-center md:justify-end gap-2 flex-wrap md:flex-nowrap">
+            <a href="/academy">
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="bg-foreground text-background min-w-[7em] px-4 py-2 whitespace-nowrap rounded-md transition-all hover:bg-foreground/80 cursor-pointer"
+              >
+                Names
+              </motion.button>
+            </a>
+            <a href="/names">
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="bg-primary  text-primary-foreground min-w-[6.5em] px-4 py-2 whitespace-nowrap rounded-md transition-all hover:bg-primary/90 cursor-pointer"
+              >
+                Fatwa
+              </motion.button>
+            </a>
+            <a href="/articles">
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="bg-primary text-primary-foreground min-w-[6.5em] px-4 py-2 whitespace-nowrap rounded-md transition-all hover:bg-primary/90 cursor-pointer"
+              >
+                Articles
+              </motion.button>
+            </a>
+          </div>
+
         </div>
 
-        {/* Mobile Menu */}
-        <AnimatePresence>
-          {isMenuOpen && (
-            <motion.div
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: 'auto' }}
-              exit={{ opacity: 0, height: 0 }}
-              className="lg:hidden border-t border-border py-8"
-            >
-              <div className="flex flex-col mb-4 gap-4">
-                {topNavItems.map((item) => (
-                  <div key={item.label} className="flex flex-col">
-                    <Link 
-                      href={item.link}
-                      onClick={() => !item.dropdown && setIsMenuOpen(false)}
-                      className={`
-                        px-6 py-4 mx-4 rounded-2xl text-xs font-black uppercase tracking-widest flex items-center justify-between
-                        ${pathname === item.link ? 'bg-[#E14D4D] text-foreground' : 'text-gray-500 dark:text-foreground/40 bg-gray-50 dark:bg-background/5'}
-                      `}
-                    >
-                      {item.label}
-                      {item.dropdown && <ChevronDown className="w-4 h-4 opacity-50" />}
-                    </Link>
-                    
-                    {item.dropdown && (
-                      <div className="grid grid-cols-1 gap-2 mt-2 px-10">
-                        {item.dropdown.map((subItem) => (
-                          <Link 
-                            key={subItem.label} 
-                            href={subItem.link}
-                            onClick={() => setIsMenuOpen(false)}
-                            className="py-3 text-[10px] font-bold uppercase tracking-widest text-slate-400 hover:text-[#E14D4D] transition-colors flex items-center gap-3"
-                          >
-                            <div className="w-1.5 h-1.5 rounded-full bg-[#E14D4D] opacity-40"></div>
-                            {subItem.label}
-                          </Link>
-                        ))}
-                      </div>
-                    )}
-                  </div>
-                ))}
+      </nav>
 
-                <div className="px-10 mt-4">
-                  <motion.button 
-                    whileTap={{ scale: 0.95 }}
-                    className="w-full bg-[#E14D4D] text-foreground py-5 rounded-2xl text-[10px] font-black uppercase tracking-[0.2em] shadow-xl"
-                  >
-                    Portal Access
-                  </motion.button>
-                </div>
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </div>
-    </nav>
+    </>
   );
-};
+}
 
 export default Navbar;
