@@ -5,7 +5,7 @@ const Home = () => {
   return (
     <>
 
-    <div className="w-full flex justify-center bg-secondary py-4">
+    <div className="w-full flex justify-center py-4">
       <Carousel />
     </div>
 
@@ -24,8 +24,6 @@ const Home = () => {
         {/* Additional sections can be added here */}
       </main>
 
-      {/* Footer */}
-      {/* <Footer /> --- IGNORE --- */}
     </div>
     </>
   );

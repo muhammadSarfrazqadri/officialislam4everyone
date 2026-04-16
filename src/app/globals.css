@@ -48,115 +48,59 @@
   --radius-4xl: calc(var(--radius) * 2.6);
 }
 
-:root {
-  --background: #fdfaf3;
-  --foreground: #003020;
-  --card: #ffffff;
-  --card-foreground: #003020;
-  --popover: #ffffff;
-  --popover-foreground: #003020;
-  --primary: #006847;
-  --primary-foreground: #ffffff;
-  --secondary: #e6c17a;
-  --secondary-foreground: #155842;
-  --muted: #f4f1e8;
-  --muted-foreground: #666e6a;
-  --accent: #e6c17a;
-  --accent-foreground: #003020;
-  --destructive: #146846;
-  --destructive-foreground: #fef2f2;
-  --border: #e2e8f0;
-  --input: #e2e8f0;
-  --ring: #006847;
-  --radius: 0.5rem;
-}
+@layer base {
+  :root {
+    /* 🏛️ Light Mode: "White Marble & Gold" */
+    --background: #1F6F5F; /* Warm off-white, easier on eyes */
+    --foreground: #2FA084; /* Deepest Forest Green */
 
-.dark {
-  --background: #001a11;
-  --foreground: #fdfaf3;
-  --card: #00261a;
-  --card-foreground: #fdfaf3;
-  --popover: #00261a;
-  --popover-foreground: #fdfaf3;
-  --primary: #009667;
-  --primary-foreground: #ffffff;
-  --secondary: #c29d5a;
-  --secondary-foreground: #001a11;
-  --muted: #003020;
-  --muted-foreground: #a3a3a3;
-  --accent: #c29d5a;
-  --accent-foreground: #001a11;
-  --destructive: #991b1b;
-  --destructive-foreground: #fef2f2;
-  --border: #003020;
-  --input: #003020;
-  --ring: #009667;
-}
+    --card: #FFFFFF;
+    --card-foreground: #042F2C;
 
-:root {
-  --background: oklch(0.98 0.01 240); /* soft white */
-  --foreground: oklch(0.15 0.03 250); /* dark text */
+    --primary: #065F46; /* Deep Emerald */
+    --primary-foreground: #F0FDF4;
 
-  --card: oklch(97.933% 0.00855 16.587);
-  --card-foreground: oklch(0.15 0.03 250);
+    --secondary: #6FCF97; /* Soft Sand/Cream */
+    --secondary-foreground: #EEEEEE; /* Darker Gold text */
 
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.15 0.03 250);
+    --accent: #ba0707; /* Metallic Gold */
+    --accent-foreground: #FFFFFF;
 
-  --primary: #2563eb; /* blue */
-  --primary-foreground: white;
+    --border: #E8E2D6;
+    --input: #F3EFE7;
+    --ring: #D4AF37;
+    
+    --radius: 1.25rem;
+  }
 
-  --secondary: #20A867;
-  --secondary-foreground: oklch(0.2 0.03 250);
+  .dark {
+    /* 🌃 Dark Mode: "Obsidian & Gold Leaf" */
+    --background: #020D0C; /* Very deep charcoal-green */
+    --foreground: #E4EAE9;
 
-  --muted: oklch(96.873% 0.00524 248.36);
-  --muted-foreground: oklch(45.442% 0.05841 250.086);
+    /* 🧱 Elevated surfaces feel like polished stone */
+    --card: #051816; 
+    --card-foreground: #E4EAE9;
 
-  --accent: oklch(0.9 0.08 240); /* light blue */
-  --accent-foreground: oklch(0.2 0.05 240);
+    /* 🌙 Primary: Luminous Teal/Emerald */
+    --primary: #10B981; 
+    --primary-foreground: #020D0C;
 
-  --destructive: oklch(0.6 0.22 25);
+    /* 🌿 Secondary: Deep Forest */
+    --secondary: #062C25;
+    --secondary-foreground: #10B981;
 
-  --border: oklch(0.88 0.02 240);
-  --input: oklch(0.88 0.02 240);
+    /* ✨ Accent: Burnished Gold (The "Pro" Secret) */
+    --accent: #C5A059; 
+    --accent-foreground: #000000;
 
-  --ring: #2563eb;
+    --muted: #031F1C;
+    --muted-foreground: #8B9F9C;
 
-  --sidebar: oklch(0.97 0.01 240);
-  --sidebar-foreground: oklch(0.2 0.03 250);
-}
-
-.dark {
-  --background: #0a0a0a; /* deep black */
-  --foreground: #ffffff;
-
-  --card: #111111;
-  --card-foreground: #ffffff;
-
-  --popover: #111111;
-  --popover-foreground: #ffffff;
-
-  --primary: #E14D4D; /* red */
-  --primary-foreground: #ffffff;
-
-  --secondary: #5e5b5b;
-  --secondary-foreground: #e5e5e5;
-
-  --muted: #1f1f1f;
-  --muted-foreground: #a1a1aa;
-
-  --accent: #E14D4D;
-  --accent-foreground: #ffffff;
-
-  --destructive: #ff4d4f;
-
-  --border: #262626;
-  --input: #262626;
-
-  --ring: #E14D4D;
-
-  --sidebar: #0f0f0f;
-  --sidebar-foreground: #ffffff;
+    --border: #0A2E28;
+    --input: #0A2E28;
+    --ring: #C5A059;
+  }
 }
 
 

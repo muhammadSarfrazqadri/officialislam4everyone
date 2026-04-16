@@ -4,6 +4,7 @@ import Footer from "../../components/Footer";
 import { ThemeProvider } from "../components/theme-provider";
 import "./globals.css";
 import SecondaryNavbar from "../../components/SecondaryNavbar";
+import BackToTop from "../../components/BackToTop";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -42,6 +43,7 @@ export default function RootLayout({ children }) {
           <SecondaryNavbar />
           <main className="flex-grow">
             {children}
+            <BackToTop />
           </main>
           <Footer />
       </body>

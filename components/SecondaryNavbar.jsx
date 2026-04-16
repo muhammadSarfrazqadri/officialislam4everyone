@@ -24,14 +24,14 @@ export default function SecondaryNavbar() {
   ];
 
   return (
-    <nav className="sticky top-0 z-50 backdrop-blur-xl bg-gradient-to-r from-white/80 via-white/70 to-white/80 dark:from-black/80 dark:via-black/70 dark:to-black/80 border-b border-white/20">
+    <nav className="sticky top-0 z-50 backdrop-blur-xl shadow-lg bg-gradient-to-r from-white/80 via-white/70 to-white/80 dark:from-black/80 dark:via-black/70 dark:to-black/80 border-b border-white/20">
 
       <div className="max-w-7xl mx-auto px-4 h-14 flex items-center justify-between">
 
         {/* Mobile Toggle */}
         <button
           onClick={() => setOpen(!open)}
-          className="md:hidden p-2 rounded-lg border bg-white/20 dark:bg-white/10 hover:scale-105 transition"
+          className="lg:hidden p-2 rounded-lg border bg-white/20 dark:bg-white/10 hover:scale-105 transition"
         >
           {open ? <X size={18} /> : <Menu size={18} />}
         </button>
@@ -46,7 +46,7 @@ export default function SecondaryNavbar() {
         </motion.h1>
 
         {/* Desktop Menu */}
-        <div className="hidden md:flex items-center gap-6">
+        <div className="hidden lg:flex items-center gap-6">
           {navItems.map((item, i) => (
             <div
               key={i}
@@ -94,7 +94,7 @@ export default function SecondaryNavbar() {
         </div>
 
         {/* Right Section Desktop */}
-        <div className="hidden md:flex items-center gap-3">
+        <div className="hidden lg:flex items-center gap-3">
 
           {/* Search */}
           <div className="flex items-center border rounded-full px-3 py-1 bg-white/50 dark:bg-black/50 backdrop-blur-md focus-within:ring-2 focus-within:ring-red-500">
@@ -128,7 +128,7 @@ export default function SecondaryNavbar() {
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
-            className="md:hidden overflow-hidden px-4 pb-4 space-y-4 border-t bg-white/90 dark:bg-black/90 backdrop-blur-xl"
+            className="lg:hidden overflow-hidden px-4 pb-4 space-y-4 border-t bg-white/90 dark:bg-black/90 backdrop-blur-xl"
           >
             {/* Search */}
             <div className="flex items-center border rounded-full px-3 py-2 bg-white/50 dark:bg-black/50">
