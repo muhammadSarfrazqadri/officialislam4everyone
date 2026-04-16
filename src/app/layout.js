@@ -5,6 +5,7 @@ import { ThemeProvider } from "../components/theme-provider";
 import "./globals.css";
 import SecondaryNavbar from "../../components/SecondaryNavbar";
 import BackToTop from "../../components/BackToTop";
+import { AuthProvider } from "@/components/AuthProvider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -39,6 +40,7 @@ export default function RootLayout({ children }) {
       className={`${geistSans.variable} ${geistMono.variable} ${playfair.variable} ${inter.variable} h-full antialiased`}
     >
       <body className="max-w-8xl mx-auto font-inter min-h-full flex flex-col bg-background dark:bg-[#0A0A0A] text-black dark:text-foreground transition-colors duration-500">
+        <AuthProvider>
           <Navbar />
           <SecondaryNavbar />
           <main className="flex-grow">
@@ -46,6 +48,7 @@ export default function RootLayout({ children }) {
             <BackToTop />
           </main>
           <Footer />
+        </AuthProvider>
       </body>
     </html>
   );
