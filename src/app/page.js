@@ -1,4 +1,4 @@
-import { Carousel } from "../../components/AnimatedButtons";
+// import { Carousel } from "../../components/AnimatedButtons";
 import Navbar from "../../components/Navbar";
 
 const Home = () => {
@@ -6,7 +6,7 @@ const Home = () => {
     <>
 
     <div className="w-full flex justify-center py-4">
-      <Carousel />
+      {/* <Carousel /> */}
     </div>
 
     <div className="min-h-screen flex flex-col">
