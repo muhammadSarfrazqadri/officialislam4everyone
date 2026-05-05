@@ -14,6 +14,7 @@ const AnimatedButton = ({ children, onClick, variant = 'primary', className = ''
     // The "Pro" Gold Button (Jewel Look)
     gold: "bg-gradient-to-tr from-[#B8860B] via-[#D4AF37] to-[#F3C382] text-[#020D0C] border-amber-200/20 font-black",
   };
+  
 
   return (
     <motion.button

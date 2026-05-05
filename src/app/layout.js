@@ -6,6 +6,7 @@ import "./globals.css";
 import SecondaryNavbar from "../../components/SecondaryNavbar";
 import BackToTop from "../../components/BackToTop";
 import { AuthProvider } from "@/components/AuthProvider";
+import BackButton from "../../components/BackButton";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -46,6 +47,7 @@ export default function RootLayout({ children }) {
           <main className="flex-grow">
             {children}
             <BackToTop />
+            <BackButton />
           </main>
           <Footer />
         </AuthProvider>

@@ -13,14 +13,24 @@ export default function SecondaryNavbar() {
     { name: "Quran", href: "/quran" },
     {
       name: "Academy",
-      dropdown: [
-        { name: "Quran Course", href: "/quran-course" },
-        { name: "Hadith Course", href: "/hadith-course" },
-        { name: "Tajweed", href: "/tajweed-course" },
-      ],
+      // dropdown: [
+      //   { name: "Quran Course", href: "/quran-course" },
+      //   { name: "Hadith Course", href: "/hadith-course" },
+      //   { name: "Tajweed", href: "/tajweed-course" },
+      // ],
     },
     { name: "Fatwa", href: "/fatwa" },
     { name: "Articles", href: "/articles" },
+    { name: "Prayer Time", href: "/prayertime" },
+    {
+      name: "More", 
+      dropdown: [
+        { name: "Islamic Names", href: "/names" },
+        { name: "Contact Us", href: "/contact" },
+        { name: "About Us", href: "/about" },
+        { name: "Privacy Policy", href: "/privacy" },
+      ]
+    },
   ];
 
   return (

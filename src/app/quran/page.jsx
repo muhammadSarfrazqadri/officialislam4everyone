@@ -12,7 +12,7 @@ const QuranPage = () => {
   const [error, setError] = useState(null);
   const [searchTerm, setSearchTerm] = useState('');
   const [revelationFilter, setRevelationFilter] = useState('all');
-  const [readingMode, setReadingMode] = useState('quran'); // quran, translation, tafseer
+  const [readingMode, setReadingMode] = useState('quran');
 
   useEffect(() => {
     const fetchSurahs = async () => {
