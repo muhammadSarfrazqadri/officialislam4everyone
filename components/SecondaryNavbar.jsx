@@ -1,179 +1,354 @@
 'use client';
 
+import Link from "next/link";
+import Image from "next/image";
 import { useState } from "react";
+
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Search, ChevronDown } from "lucide-react";
+
+import {
+  Menu,
+  X,
+  Search,
+  ChevronDown,
+  HeartHandshake,
+} from "lucide-react";
+
+import Islam4EveryoneLogo from "../public/isalm-for-everyone-logo2.png";
 
 export default function SecondaryNavbar() {
+
   const [open, setOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState(null);
 
   const navItems = [
-    { name: "Home", href: "/" },
-    { name: "Quran", href: "/quran" },
     {
-      name: "Academy",
+      name: "Home",
+      href: "/",
+    },
+
+    {
+      name: "Quran",
+      href: "/quran",
       // dropdown: [
-      //   { name: "Quran Course", href: "/quran-course" },
-      //   { name: "Hadith Course", href: "/hadith-course" },
-      //   { name: "Tajweed", href: "/tajweed-course" },
+      //   { name: "Read Quran", href: "/quran" },
+      //   { name: "Translation", href: "/quran/translation" },
+      //   { name: "Tafseer", href: "/quran/tafseer" },
+      //   { name: "Audio Quran", href: "/quran/audio" },
       // ],
     },
-    { name: "Fatwa", href: "/fatwa" },
-    { name: "Articles", href: "/articles" },
-    { name: "Prayer Time", href: "/prayertime" },
+
     {
-      name: "More", 
+      name: "Hadith",
+      href: "/hadith",
+      dropdown: [
+        { name: "40 Hadith", href: "/hadith/40-hadith" },
+        { name: "Daily Hadith", href: "/hadith/daily" },
+        { name: "Riyad-us-Saliheen", href: "/hadith/riyad-us-saliheen" },
+      ],
+    },
+
+    {
+      name: "Learn Islam",
+      href: "/learn-islam",
+      dropdown: [
+        { name: "Namaz", href: "/learn-islam/namaz" },
+        { name: "Wudu", href: "/learn-islam/wudu" },
+        { name: "Ghusl", href: "/learn-islam/ghusl" },
+        { name: "Fard Uloom", href: "/learn-islam/fard-uloom" },
+      ],
+    },
+
+    {
+      name: "Fatwa",
+      href: "/fatwa",
+      dropdown: [
+        { name: "Ask Question", href: "/fatwa/ask" },
+        { name: "Browse Fatwas", href: "/fatwa/browse" },
+        { name: "Women مسائل", href: "/fatwa/women" },
+      ],
+    },
+
+    {
+      name: "Articles",
+      href: "/articles",
+      dropdown: [
+        { name: "Islamic History", href: "/articles/history" },
+        { name: "Seerat", href: "/articles/seerat" },
+        { name: "Youth", href: "/articles/youth" },
+        { name: "Family", href: "/articles/family" },
+      ],
+    },
+
+    {
+      name: "More",
       dropdown: [
         { name: "Islamic Names", href: "/names" },
-        { name: "Contact Us", href: "/contact" },
+        { name: "Prayer Times", href: "/prayer-times" },
+        { name: "Qibla Finder", href: "/qibla-finder" },
+        { name: "Zakat Calculator", href: "/zakat-calculator" },
+        { name: "Inheritance", href: "/inheritance" },
+        { name: "Academy", href: "/academy" },
         { name: "About Us", href: "/about" },
-        { name: "Privacy Policy", href: "/privacy" },
-      ]
+        { name: "Contact", href: "/contact" },
+      ],
     },
   ];
 
   return (
-    <nav className="sticky top-0 z-50 backdrop-blur-xl shadow-lg bg-gradient-to-r from-white/80 via-white/70 to-white/80 dark:from-black/80 dark:via-black/70 dark:to-black/80 border-b border-white/20">
 
-      <div className="max-w-7xl mx-auto px-4 h-14 flex items-center justify-between">
+    <nav className="sticky top-0 z-50 border-b border-border bg-background/80 backdrop-blur-xl shadow-sm">
 
-        {/* Mobile Toggle */}
+      <div className="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between gap-5">
+
+        {/* MOBILE MENU BUTTON */}
         <button
           onClick={() => setOpen(!open)}
-          className="lg:hidden p-2 rounded-lg border bg-white/20 dark:bg-white/10 hover:scale-105 transition"
+          className="lg:hidden flex items-center justify-center w-10 h-10 rounded-xl border border-border bg-card hover:bg-secondary transition-all duration-300"
         >
-          {open ? <X size={18} /> : <Menu size={18} />}
+          {open ? (
+            <X size={20} className="text-foreground" />
+          ) : (
+            <Menu size={20} className="text-foreground" />
+          )}
         </button>
 
-        {/* Logo */}
-        <motion.h1
-          initial={{ opacity: 0, y: -10 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="font-bold text-lg bg-gradient-to-r from-red-500 via-orange-500 to-yellow-500 bg-clip-text text-transparent"
+        {/* LOGO */}
+        <Link
+          href="/"
+          className="flex items-center gap-3 shrink-0"
         >
-          <a href="/">ISLAM4EVERYONE</a>
-        </motion.h1>
 
-        {/* Desktop Menu */}
-        <div className="hidden lg:flex items-center gap-6">
+          <Image
+            src={Islam4EveryoneLogo}
+            alt="Islam4Everyone"
+            className="h-[50px] w-auto object-contain"
+            priority
+          />
+
+        </Link>
+
+        {/* DESKTOP NAVIGATION */}
+        <div className="hidden lg:flex items-center gap-7">
+
           {navItems.map((item, i) => (
+
             <div
               key={i}
-              className="relative group"
+              className="relative"
               onMouseEnter={() => setActiveDropdown(i)}
               onMouseLeave={() => setActiveDropdown(null)}
             >
-              <motion.a
-                whileHover={{ scale: 1.1 }}
-                className="flex items-center gap-1 text-sm font-medium cursor-pointer text-gray-700 dark:text-gray-200"
-              >
-                {item.name}
-                {item.dropdown && <ChevronDown size={14} />}
-              </motion.a>
 
-              {/* Dropdown */}
+              <motion.div
+                whileHover={{ y: -1 }}
+                className="relative"
+              >
+
+                <Link
+                  href={item.href || "#"}
+                  className="flex items-center gap-1 text-sm font-medium text-foreground hover:text-primary transition-all duration-300"
+                >
+
+                  {item.name}
+
+                  {item.dropdown && (
+                    <ChevronDown
+                      size={15}
+                      className={`transition-transform duration-300 ${
+                        activeDropdown === i ? "rotate-180" : ""
+                      }`}
+                    />
+                  )}
+
+                </Link>
+
+                {/* UNDERLINE */}
+                <div className="absolute -bottom-2 left-0 h-[2px] w-0 bg-accent transition-all duration-300 group-hover:w-full" />
+
+              </motion.div>
+
+              {/* DROPDOWN */}
               <AnimatePresence>
+
                 {item.dropdown && activeDropdown === i && (
+
                   <motion.div
-                    initial={{ opacity: 0, y: 10 }}
+                    initial={{ opacity: 0, y: 12 }}
                     animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: 10 }}
-                    className="absolute top-full left-0 mt-2 w-48 bg-white dark:bg-black shadow-2xl rounded-xl overflow-hidden border"
+                    exit={{ opacity: 0, y: 12 }}
+                    transition={{ duration: 0.2 }}
+                    className="absolute top-full left-0 mt-4 w-64 rounded-2xl border border-border bg-card shadow-2xl overflow-hidden"
                   >
-                    {item.dropdown.map((sub, idx) => (
-                      <a
-                        key={idx}
-                        href={sub.href}
-                        className="block px-4 py-2 text-sm hover:bg-gradient-to-r hover:from-red-500/10 hover:to-orange-500/10"
-                      >
-                        {sub.name}
-                      </a>
-                    ))}
+
+                    <div className="p-2">
+
+                      {item.dropdown.map((sub, idx) => (
+
+                        <Link
+                          key={idx}
+                          href={sub.href}
+                          className="flex items-center justify-between rounded-xl px-4 py-3 text-sm text-muted-foreground hover:bg-secondary hover:text-primary transition-all duration-300"
+                        >
+
+                          {sub.name}
+
+                          <ChevronDown
+                            size={14}
+                            className="-rotate-90 opacity-40"
+                          />
+
+                        </Link>
+
+                      ))}
+
+                    </div>
+
                   </motion.div>
+
                 )}
+
               </AnimatePresence>
 
-              {/* Animated underline */}
-              <motion.div
-                layoutId="underline"
-                className="h-[2px] bg-gradient-to-r from-red-500 to-orange-500 w-0 group-hover:w-full transition-all duration-300"
-              />
             </div>
+
           ))}
+
         </div>
 
-        {/* Right Section Desktop */}
+        {/* RIGHT SECTION */}
         <div className="hidden lg:flex items-center gap-3">
 
-          {/* Search */}
-          <div className="flex items-center border rounded-full px-3 py-1 bg-white/50 dark:bg-black/50 backdrop-blur-md focus-within:ring-2 focus-within:ring-red-500">
-            <input className="bg-transparent outline-none text-sm" placeholder="Search" />
-            <Search size={16} />
+          {/* SEARCH */}
+          <div className="flex items-center gap-2 h-11 px-4 rounded-full border border-border bg-card">
+
+            <Search
+              size={17}
+              className="text-muted-foreground"
+            />
+
+            <input
+              type="text"
+              placeholder="Search..."
+              className="bg-transparent outline-none text-sm placeholder:text-muted-foreground w-[170px]"
+            />
+
           </div>
 
-          {/* Buttons */}
+          {/* DONATE BUTTON */}
           <motion.button
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.95 }}
-            className="bg-gradient-to-r from-red-500 to-orange-500 text-white px-4 py-1 rounded-full text-sm shadow-lg hover:shadow-red-500/50"
+            whileHover={{ y: -1 }}
+            whileTap={{ scale: 0.98 }}
+            className="h-11 px-5 rounded-full bg-[var(--btn-donate-bg)] text-[var(--btn-donate-text)] border border-[var(--btn-donate-border)] shadow-md hover:bg-[var(--btn-donate-hover)] transition-all duration-300 text-sm font-semibold flex items-center gap-2"
           >
+
+            <HeartHandshake size={17} />
+
             Donate
+
           </motion.button>
 
-          <motion.button
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.95 }}
-            className="bg-gradient-to-r from-pink-500 to-purple-500 text-white px-4 py-1 rounded-full text-sm shadow-lg hover:shadow-pink-500/50"
-          >
-            Feedback
-          </motion.button>
         </div>
+
       </div>
 
-      {/* Mobile Menu */}
+      {/* MOBILE MENU */}
       <AnimatePresence>
+
         {open && (
+
           <motion.div
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
-            className="lg:hidden overflow-hidden px-4 pb-4 space-y-4 border-t bg-white/90 dark:bg-black/90 backdrop-blur-xl"
+            className="lg:hidden overflow-hidden border-t border-border bg-background"
           >
-            {/* Search */}
-            <div className="flex items-center border rounded-full px-3 py-2 bg-white/50 dark:bg-black/50">
-              <input className="w-full bg-transparent outline-none" placeholder="Search" />
-              <Search size={16} />
-            </div>
 
-            {/* Links */}
-            {navItems.map((item, i) => (
-              <div key={i}>
-                <p className="font-medium">{item.name}</p>
-                {item.dropdown && (
-                  <div className="pl-4 mt-1 space-y-1 text-sm">
-                    {item.dropdown.map((sub, idx) => (
-                      <a key={idx} href={sub.href} className="block hover:text-red-500">
-                        {sub.name}
-                      </a>
-                    ))}
-                  </div>
-                )}
+            <div className="px-4 py-5 space-y-5">
+
+              {/* MOBILE SEARCH */}
+              <div className="flex items-center gap-2 h-12 px-4 rounded-full border border-border bg-card">
+
+                <Search
+                  size={17}
+                  className="text-muted-foreground"
+                />
+
+                <input
+                  type="text"
+                  placeholder="Search..."
+                  className="w-full bg-transparent outline-none text-sm placeholder:text-muted-foreground"
+                />
+
               </div>
-            ))}
 
-            {/* Buttons */}
-            <div className="flex gap-3">
-              <button className="flex-1 bg-gradient-to-r from-red-500 to-orange-500 text-white py-2 rounded-full shadow-lg">
-                Donate
+              {/* MOBILE LINKS */}
+              <div className="space-y-4">
+
+                {navItems.map((item, i) => (
+
+                  <div key={i}>
+
+                    <Link
+                      href={item.href || "#"}
+                      className="flex items-center justify-between text-sm font-medium text-foreground"
+                    >
+
+                      {item.name}
+
+                      {item.dropdown && (
+                        <ChevronDown
+                          size={15}
+                          className="opacity-50"
+                        />
+                      )}
+
+                    </Link>
+
+                    {/* SUB MENU */}
+                    {item.dropdown && (
+
+                      <div className="mt-3 ml-3 border-l border-border pl-4 space-y-3">
+
+                        {item.dropdown.map((sub, idx) => (
+
+                          <Link
+                            key={idx}
+                            href={sub.href}
+                            className="block text-sm text-muted-foreground hover:text-primary transition-all duration-300"
+                          >
+
+                            {sub.name}
+
+                          </Link>
+
+                        ))}
+
+                      </div>
+
+                    )}
+
+                  </div>
+
+                ))}
+
+              </div>
+
+              {/* MOBILE DONATE */}
+              <button
+                className="w-full h-12 rounded-full bg-[var(--btn-donate-bg)] text-[var(--btn-donate-text)] font-semibold border border-[var(--btn-donate-border)]"
+              >
+                Support The Mission
               </button>
-              <button className="flex-1 bg-gradient-to-r from-pink-500 to-purple-500 text-white py-2 rounded-full shadow-lg">
-                Feedback
-              </button>
+
             </div>
+
           </motion.div>
+
         )}
+
       </AnimatePresence>
+
     </nav>
   );
 }

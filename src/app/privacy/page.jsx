@@ -3,6 +3,32 @@ import React from 'react';
 const PrivacyPage = () => {
   return (
     <div className="min-h-screen bg-background">
+
+            {/* Hero Section */}
+      <section className="relative overflow-hidden pt-20 pb-16">
+        <div className="absolute inset-0 overflow-hidden">
+          <div className="absolute -top-40 -right-40 w-80 h-80 bg-emerald-500/10 rounded-full blur-3xl"></div>
+          <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-green-500/10 rounded-full blur-3xl"></div>
+        </div>
+
+        <div className="container mx-auto px-6 relative z-10">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="max-w-4xl mx-auto text-center"
+          >
+            <h1 className="text-5xl md:text-6xl font-black uppercase tracking-tighter mb-4 bg-gradient-to-r from-emerald-400 via-green-300 to-emerald-400 bg-clip-text text-transparent">
+              The Holy Quran
+            </h1>
+            <p className="text-7xl arabic-title text-emerald-300 mb-6">القرآن الكريم</p>
+            <p className="text-gray-300 text-lg font-medium leading-relaxed max-w-2xl mx-auto">
+              Explore the divine revelation of Allah with authentic Arabic text, translations, and detailed Tafseer explanations.
+            </p>
+          </motion.div>
+        </div>
+      </section>
+
+
       <section className="bg-slate-50 border-b border-gray-100 py-24">
         <div className="container mx-auto px-6 max-w-4xl text-center">
           <h1 className="text-5xl font-black text-[var(--secondary)] uppercase tracking-tighter mb-6">

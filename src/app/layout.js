@@ -8,6 +8,13 @@ import BackToTop from "../../components/BackToTop";
 import { AuthProvider } from "@/components/AuthProvider";
 import BackButton from "../../components/BackButton";
 
+import { Noto_Naskh_Arabic } from "next/font/google";
+
+const arabic = Noto_Naskh_Arabic({
+  subsets: ["arabic"],
+  weight: ["400", "700"],
+});
+
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -38,7 +45,7 @@ export default function RootLayout({ children }) {
     <html
       lang="en"
       suppressHydrationWarning
-      className={`${geistSans.variable} ${geistMono.variable} ${playfair.variable} ${inter.variable} h-full antialiased`}
+      className={`${geistSans.variable} ${geistMono.variable} ${playfair.variable} ${inter.variable} ${arabic.variable} h-full antialiased`}
     >
       <body className="max-w-8xl mx-auto font-inter min-h-full flex flex-col bg-background dark:bg-[#0A0A0A] text-black dark:text-foreground transition-colors duration-500">
         <AuthProvider>
